@@ -21,9 +21,12 @@ OBJ     = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 
 # compiling .c files
-$(ODIR)/%.o: %.c %.h
+## just for .c files (otherwise cannot compile main.c when main.o not exist)
+$(ODIR)/%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
-
+## just for .h files
+$(ODIR)/%.o: %.h
+	$(CC) $(CFLAGS) -c $< -o $@
 ## just for utils/*.[ch] files
 $(ODIR)/%.o: $(UDIR)/%.c $(UDIR)/%.h
 	$(CC) $(OCFLAGS) -c $< -o $@
