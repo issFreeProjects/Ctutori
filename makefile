@@ -13,7 +13,7 @@ CFLAGS  = -I .
 OCFLAGS = -I $(UDIR)
 
 
-_OBJ    = ptrs.o pprint.o intLinkedList.o main.o
+_OBJ    = ptrs.o pprint.o intLinkedList.o mmath.o main.o
 # create .o path: build/example.o
 OBJ     = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
