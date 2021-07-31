@@ -31,7 +31,7 @@ int main( int argc, char **argv )
 				displayBits(n);
 		*/ }
 		if(strcmp(argv[1],"intLinkedList")==0){
-				/*  // Example of using int linked list
+				  // Example of using int linked list
 				struct Node* nodePtr = initIntLinkedList();
 				for(int i=0; i<1000; i++)
 					addNode(nodePtr, i);
@@ -47,7 +47,8 @@ int main( int argc, char **argv )
 					     isContains(nodePtr,1151),
 						 isContains(nodePtr,66),
 						 getListLen(nodePtr) ); 
-		*/}
+						 printf("%d", sizeof(nodePtr));
+		}
 	}
 	return 10;
 }
