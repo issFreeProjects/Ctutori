@@ -18,3 +18,9 @@ int findGCD(int a,int b)
      }
      return a;
 }
+
+
+int mlcm(int a, int b)
+{
+    return ( mabs(a*b) / findGCD(a,b) );
+}
