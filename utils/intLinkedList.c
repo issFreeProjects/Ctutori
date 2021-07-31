@@ -4,15 +4,15 @@
 #include <stdlib.h>
 
 /* 
-       head         second         third
-        |             |             |
-        |             |             |
-    +---+---+     +---+---+     +----+----+
-    | 1  | o----->| 2 | o-----> |  # |  # |
-    +---+---+     +---+---+     +----+----+      */
+    head               second        third
+    |                  |             |
+    |                  |             |
+    +--------+---+     +---+---+     +---+---+
+    | length | o<----> | 2 | o<----> | # | o<--...
+    +--------+---+     +---+---+     +---+---+      */
 
 struct Node {
-    int data;
+    int data;           // at head, stors lengh of list, and for others, stors what you set
     struct Node* next;  // stors pointer to the next node
     struct Node* prev;  // at head, stors last node and for others, stors previous node (ptr to ...)
 };
@@ -31,12 +31,7 @@ struct Node* initIntLinkedList()
 
 int getListLen(struct Node* head)
 {
-    int len = 0;
-    while( head->next != NULL ){
-        len++;
-        head = head->next;
-    }
-    return len;
+    return head->data;
 }
 
 
@@ -99,11 +94,13 @@ void addNode(struct Node* head, int value)
         (head->prev)->next  = newNode;
     else head->next         = newNode; // there is some other nodes
     head->prev              = newNode; // last node in new linkes list is newNode
+    head->data++;
 }
 
 
-void addToStart(struct Node* head, int value)
-{
+// dont use this function outside
+void addToStartHelper(struct Node* head, int value)
+{   // this function only add newNode at head (not necessary head of the linked list)
     struct Node *newNode = (struct Node*)malloc(sizeof(struct Node));
     newNode->data        = value;  // set data of new node
     newNode->next        = head->next;  // set next node of new node
@@ -114,9 +111,17 @@ void addToStart(struct Node* head, int value)
 }
 
 
+void addToStart(struct Node* head, int value)
+{   
+    head->data++;  // increase size of linked list
+    addToStartHelper(head,value);  
+}
+
+
 void addToIndex(struct Node* head, int index, int value)
 {  // move link to index and add newNode at first
-    addToStart( getNodeAtIndex(head, index), value );
+    head->data++;
+    addToStartHelper(getNodeAtIndex(head, index), value);
 }
 
 // dont use this function outside
