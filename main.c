@@ -7,9 +7,11 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include <utils/ptrs.h>
 #include <utils/pprint.h>
 #include <utils/intLinkedList.h>
+#include <utils/mmath.h>
 
 int main( int argc, char **argv )
 {
@@ -45,6 +47,11 @@ int main( int argc, char **argv )
 					     isContains(nodePtr,1151),
 						 isContains(nodePtr,66),
 						 getListLen(nodePtr) ); 
+		}
+		if(strcmp(argv[1],"mmath")==0){  /*** Example of using mmath ***/
+			int *a = malloc(2*sizeof(int));
+			scanf("%d", a);scanf("%d", &a[1]);
+			printf("%d\n", findGCD(a[0],a[1]));
 		}
 	}
 	return 10;
