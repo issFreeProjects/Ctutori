@@ -1,10 +1,7 @@
 #include <pprint.h>
 #include <stdio.h>
 
-struct Node {
-    int data;
-    struct Node* next;
-};
+
 
 int test()
 {
