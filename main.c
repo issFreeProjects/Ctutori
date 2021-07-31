@@ -7,7 +7,6 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
 #include <utils/ptrs.h>
 #include <utils/pprint.h>
 #include <utils/intLinkedList.h>
@@ -49,9 +48,8 @@ int main( int argc, char **argv )
 						 getListLen(nodePtr) ); 
 		}
 		if(strcmp(argv[1],"mmath")==0){  /*** Example of using mmath ***/
-			int *a = malloc(2*sizeof(int));
-			scanf("%d", a);scanf("%d", &a[1]);
-			printf("%d\n", findGCD(a[0],a[1]));
+			printf("a=378, b=1386 => GCD=%d , LCM=%d\n", findGCD(378,1386), mlcm(378,1386));
+			printf("fibo(20)=%d", fibo(7));
 		}
 	}
 	return 10;
