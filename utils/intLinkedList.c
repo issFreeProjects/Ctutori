@@ -29,129 +29,129 @@ struct Node* initIntLinkedList()
 }
 
 
-int getListLen(struct Node* node)
+int getListLen(struct Node* head)
 {
     int len = 0;
-    while( node->next != NULL ){
+    while( head->next != NULL ){
         len++;
-        node = node->next;
+        head = head->next;
     }
     return len;
 }
 
 
-void pr(struct Node* n)
+void pr(struct Node* head)
 {
-    printf("***debug=[%d,%d]", n->data, n->next);
+    printf("***debug=[%d,%d]", head->data, head->next);
 }
 
 
-void printIntLinkedList(struct Node* node)
+void printIntLinkedList(struct Node* head)
 {
-    if( node == NULL )
+    if( head == NULL )
         printf("[ NULL ]");
-    if( node->next == NULL )
+    if( head->next == NULL )
         printf("[]\n");
     else{
-        node = node->next; // do not print default head!
+        head = head->next; // do not print default head!
         printf("[");
-        while (node != NULL) {
-            printf( " %d ", node->data );
-            node = node->next;
+        while (head != NULL) {
+            printf( " %d ", head->data );
+            head = head->next;
         }
         printf("]\n");
     }
 }
 
 
-void sPrintIntLinkedList(struct Node* node, char *s)
+void sPrintIntLinkedList(struct Node* head, char *s)
 {
     printf("%s", s);
-    printIntLinkedList(node);
+    printIntLinkedList(head);
 }
 
 
-struct Node* getlastNode(struct Node* node)
+struct Node* getlastNode(struct Node* head)
 {
-    return node->prev;
+    return head->prev;
 }
 
 
-struct Node* getNodeAtIndex(struct Node* node, int index)
+struct Node* getNodeAtIndex(struct Node* head, int index)
 {
     int cursor = -1;
-    while( node->next != NULL && cursor != index )
+    while( head->next != NULL && cursor != index )
     {
         cursor++;
-        node = node->next;
+        head = head->next;
     }
-    return node;
+    return head;
 }
 
 
-void addNode(struct Node* node, int value)
+void addNode(struct Node* head, int value)
 {
     struct Node *newNode    = (struct Node*)malloc(sizeof(struct Node)); // allocate memory
     newNode->data           = value;  // set new node's data
     newNode->next           = NULL;   // this oe added to end => there is no next
-    newNode->prev           = node->prev;  // previous node is last node (node->prev) 
-    if (node->prev != NULL)  // this new node is first node
-        (node->prev)->next  = newNode;
-    else node->next         = newNode; // there is some other nodes
-    node->prev              = newNode; // last node in new linkes list is newNode
+    newNode->prev           = head->prev;  // previous node is last node (node->prev) 
+    if (head->prev != NULL)  // this new node is first node
+        (head->prev)->next  = newNode;
+    else head->next         = newNode; // there is some other nodes
+    head->prev              = newNode; // last node in new linkes list is newNode
 }
 
 
-void addToStart(struct Node* node, int value)
+void addToStart(struct Node* head, int value)
 {
     struct Node *newNode = (struct Node*)malloc(sizeof(struct Node));
     newNode->data        = value;  // set data of new node
-    newNode->next        = node->next;  // set next node of new node
-    newNode->prev        = node;  // previous node of newNode is head
-    node->next           = newNode;  // head's next node is newNode (it's the first node)
+    newNode->next        = head->next;  // set next node of new node
+    newNode->prev        = head;  // previous node of newNode is head
+    head->next           = newNode;  // head's next node is newNode (it's the first node)
     if( (newNode)->next != NULL )  // linkes list was empty head
         ((newNode)->next)->prev = newNode;
 }
 
 
-void addToIndex(struct Node* node, int index, int value)
+void addToIndex(struct Node* head, int index, int value)
 {  // move link to index and add newNode at first
-    addToStart( getNodeAtIndex(node, index), value );
+    addToStart( getNodeAtIndex(head, index), value );
 }
 
 // dont use this function outside
-void removeOnlyOneNode(struct Node* node)
+void removeOnlyOneNode(struct Node* head)
 {  // this works only when there is one node in the list, and will remove it
    // then will free memory. 
-    node->prev = NULL;
-    free(node->next);
-    node->next = NULL;
+    head->prev = NULL;
+    free(head->next);
+    head->next = NULL;
 }
 
-void removeFirst(struct Node* node)
+void removeFirst(struct Node* head)
 {
-    if( node->next != NULL ){
-        if( node->next == node->prev ){ // only one node
-            removeOnlyOneNode(node);
+    if( head->next != NULL ){
+        if( head->next == head->prev ){ // only one node
+            removeOnlyOneNode(head);
         }else { // more than one node exist
-            node->next = (node->next)->next;  // head's next node is the second node in list
-            free( (node->next)->prev );  // (node->next) is the second element =>
+            head->next = (head->next)->next;  // head's next node is the second node in list
+            free( (head->next)->prev );  // (node->next) is the second element =>
                                          // (node->next)->prev is node that we want to remove it
-            (node->next)->prev = node;   // now node->next is the first node in list
+            (head->next)->prev = head;   // now node->next is the first node in list
                                          // so it's previous is head
         }
     }
 }
 
 
-void removeAtIndex(struct Node* node, int index)
+void removeAtIndex(struct Node* head, int index)
 {
     if( index==0 )
-        removeFirst(node);
+        removeFirst(head);
     else{
-        struct Node* toRm = getNodeAtIndex(node,index); // pointer to node that we will remove it
+        struct Node* toRm = getNodeAtIndex(head,index); // pointer to node that we will remove it
         if( toRm->next == NULL ){  // selected node is at the end of list
-            removeLast(node);
+            removeLast(head);
         }else{  // exist at least one node before it and one other after it
             (toRm->prev)->next = toRm->next; // next of before node is next of toRm
             (toRm->next)->prev = toRm->prev; // preious of next node is previous of toRm
@@ -162,31 +162,31 @@ void removeAtIndex(struct Node* node, int index)
 }
 
 
-void removeLast(struct Node* node)
+void removeLast(struct Node* head)
 {
-    if( node->prev != NULL ){
+    if( head->prev != NULL ){
             // there is at least one node
-            if( node->prev == node->next )  // only one node
+            if( head->prev == head->next )  // only one node
             {
-                removeOnlyOneNode(node);
+                removeOnlyOneNode(head);
             }else {   
-                node->prev = (node->prev)->prev;
-                free((node->prev)->next);
-                (node->prev)->next = NULL;
+                head->prev = (head->prev)->prev;
+                free((head->prev)->next);
+                (head->prev)->next = NULL;
             }
     }
 }
 
 
-int isContains(struct Node* node, int value)
+int isContains(struct Node* head, int value)
 {
     int cursor = 0;
-    while( node != NULL )
+    while( head != NULL )
     {
         cursor++;
-        if(node->data == value)
+        if(head->data == value)
             return 0;
-        else node = node->next;
+        else head = head->next;
     }
     return -1;
 }
