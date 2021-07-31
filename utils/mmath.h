@@ -1,11 +1,5 @@
-int findGCD(int a,int b)
-{
-     while(a!=b)
-     {
-          if(a>b)
-              return findGCD(a-b,b);
-          else
-             return findGCD(a,b-a);
-     }
-     return a;
-}
+// find g.c.d of two integers
+int findGCD(int a,int b);
+
+// find abs of integers abs(x) = (x if x>0) (-x is x<0)
+int abs(int n);
