@@ -124,6 +124,7 @@ void addToIndex(struct Node* head, int index, int value)
     addToStartHelper(getNodeAtIndex(head, index), value);
 }
 
+
 // dont use this function outside
 void removeOnlyOneNode(struct Node* head)
 {  // this works only when there is one node in the list, and will remove it
@@ -131,6 +132,7 @@ void removeOnlyOneNode(struct Node* head)
     head->prev = NULL;
     free(head->next);
     head->next = NULL;
+    head->data = 0;  // length=0
 }
 
 void removeFirst(struct Node* head)
@@ -139,6 +141,7 @@ void removeFirst(struct Node* head)
         if( head->next == head->prev ){ // only one node
             removeOnlyOneNode(head);
         }else { // more than one node exist
+            head->data--;  // size decrease by -1
             head->next = (head->next)->next;  // head's next node is the second node in list
             free( (head->next)->prev );  // (head->next) is the second element =>
                                          // (head->next)->prev is node that we want to remove it
@@ -155,8 +158,10 @@ void removeAtIndex(struct Node* head, int index)
     else{
         struct Node* toRm = getNodeAtIndex(head,index); // pointer to node that we will remove it
         if( toRm->next == NULL ){  // selected node is at the end of list
+            printf("** %d ** , index = %d\n", toRm->data, index);
             removeLast(head);
         }else{  // exist at least one node before it and one other after it
+            head->data--;  // size decrease by -1
             (toRm->prev)->next = toRm->next; // next of before node is next of toRm
             (toRm->next)->prev = toRm->prev; // preious of next node is previous of toRm
         }
@@ -173,7 +178,8 @@ void removeLast(struct Node* head)
             if( head->prev == head->next )  // only one node
             {
                 removeOnlyOneNode(head);
-            }else {   
+            }else {  
+                head->data--;  // size decrease by -1 
                 head->prev = (head->prev)->prev;
                 free((head->prev)->next);
                 (head->prev)->next = NULL;
