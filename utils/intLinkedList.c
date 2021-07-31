@@ -94,7 +94,7 @@ void addNode(struct Node* head, int value)
     struct Node *newNode    = (struct Node*)malloc(sizeof(struct Node)); // allocate memory
     newNode->data           = value;  // set new node's data
     newNode->next           = NULL;   // this oe added to end => there is no next
-    newNode->prev           = head->prev;  // previous node is last node (node->prev) 
+    newNode->prev           = head->prev;  // previous node is last node (head->prev) 
     if (head->prev != NULL)  // this new node is first node
         (head->prev)->next  = newNode;
     else head->next         = newNode; // there is some other nodes
@@ -135,10 +135,9 @@ void removeFirst(struct Node* head)
             removeOnlyOneNode(head);
         }else { // more than one node exist
             head->next = (head->next)->next;  // head's next node is the second node in list
-            free( (head->next)->prev );  // (node->next) is the second element =>
-                                         // (node->next)->prev is node that we want to remove it
-            (head->next)->prev = head;   // now node->next is the first node in list
-                                         // so it's previous is head
+            free( (head->next)->prev );  // (head->next) is the second element =>
+                                         // (head->next)->prev is node that we want to remove it
+            (head->next)->prev = head; // now head->next is the first node in list so it's previous is the head
         }
     }
 }
