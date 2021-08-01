@@ -33,7 +33,7 @@ int main( int argc, char **argv )
 		if(strcmp(argv[1],"intLinkedList")==0){  /*** Example of using int linked list ***/
 				illNode* nodePtr = initIntLinkedList();
 				for(int i=0; i<1000; i++)
-					addNode(nodePtr, i);
+					illAdd(nodePtr, i);
 		
 				for(int i=0; i<901; i++)
 					removeFirst(nodePtr);

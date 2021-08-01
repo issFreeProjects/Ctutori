@@ -12,17 +12,19 @@ void sprintILL(struct illNode* node, char *s);
 
 
 // get pointer of last node
-struct illNode* getlastNode(struct illNode* node);
+illNode* illLastNode(illNode* node);
+// get pointer of node at index
+illNode* illGetAtIndex(illNode* head, int index);
 
 
 // add new node
-void addNode(struct illNode* node, int value);
+void illAdd(illNode* node, int value);
 
 
-void addToStart(struct illNode* node, int value);
+void illAddToTop(illNode* node, int value);
 
 
-void addToIndex(struct illNode* node, int index, int value);
+void illAddToIndex(illNode* node, int index, int value);
 
 
 void removeFirst(struct illNode* node);

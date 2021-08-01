@@ -60,13 +60,13 @@ void sprintILL(illNode* head, char *s)
 }
 
 
-illNode* getlastNode(illNode* head)
+illNode* illLastNode(illNode* head)
 {
     return head->prev;
 }
 
 
-illNode* getNodeAtIndex(illNode* head, int index)
+illNode* illGetAtIndex(illNode* head, int index)
 {
     int cursor = -1;
     while( head->next != NULL && cursor != index )
@@ -78,7 +78,7 @@ illNode* getNodeAtIndex(illNode* head, int index)
 }
 
 
-void addNode(illNode* head, int value)
+void illAdd(illNode* head, int value)
 {
     illNode *newNode           = (illNode*)malloc(sizeof(illNode)); // allocate memory
     newNode->data           = value;  // set new node's data
@@ -105,17 +105,17 @@ void addToStartHelper(illNode* head, int value)
 }
 
 
-void addToStart(illNode* head, int value)
+void illAddToTop(illNode* head, int value)
 {   
     head->data++;  // increase size of linked list
     addToStartHelper(head,value);  
 }
 
 
-void addToIndex(illNode* head, int index, int value)
+void illAddToIndex(illNode* head, int index, int value)
 {  // move link to index and add newNode at first
     head->data++;
-    addToStartHelper(getNodeAtIndex(head, index), value);
+    addToStartHelper(illGetAtIndex(head, index), value);
 }
 
 
@@ -150,7 +150,7 @@ void removeAtIndex(illNode* head, int index)
     if( index==0 )
         removeFirst(head);
     else{
-        illNode* toRm = getNodeAtIndex(head,index); // pointer to node that we will remove it
+        illNode* toRm = illGetAtIndex(head,index); // pointer to node that we will remove it
         if( toRm->next == NULL ){  // selected node is at the end of list
             removeLast(head);
         }else{  // exist at least one node before it and one other after it
