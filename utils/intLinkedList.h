@@ -1,14 +1,14 @@
 typedef struct illNode illNode;
 
 // some initialization
-struct illNode* initIntLinkedList();
+illNode* initIntLinkedList();
 
 // not sufficient fot big lists
-int illLenght(struct illNode* node);
+int illLenght(illNode* node);
 
 // print
-void illPrint(struct illNode* node);
-void sprintILL(struct illNode* node, char *s);
+void illPrint(illNode* node);
+void sprintILL(illNode* node, char *s);
 
 
 // get pointer of last node
