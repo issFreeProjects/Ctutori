@@ -18,10 +18,10 @@ struct Node {
 };
 
 
-struct Node* initIntLinkedList()
+Node* initIntLinkedList()
 {
-    struct Node* head = NULL;
-    head = (struct Node*)malloc(sizeof(struct Node));
+    Node* head = NULL;
+    head = (Node*)malloc(sizeof(Node));
     head->data = 0;
     head->next = NULL;
     head->prev = NULL;
@@ -29,19 +29,19 @@ struct Node* initIntLinkedList()
 }
 
 
-int getListLen(struct Node* head)
+int getListLen(Node* head)
 {
     return head->data;
 }
 
 
-void pr(struct Node* head)
+void pr(Node* head)
 {
     printf("***debug=[%d,%d]", head->data, head->next);
 }
 
 
-void printIntLinkedList(struct Node* head)
+void printIntLinkedList(Node* head)
 {
     if( head == NULL )
         printf("[ NULL ]");
@@ -59,20 +59,20 @@ void printIntLinkedList(struct Node* head)
 }
 
 
-void sPrintIntLinkedList(struct Node* head, char *s)
+void sPrintIntLinkedList(Node* head, char *s)
 {
     printf("%s", s);
     printIntLinkedList(head);
 }
 
 
-struct Node* getlastNode(struct Node* head)
+Node* getlastNode(Node* head)
 {
     return head->prev;
 }
 
 
-struct Node* getNodeAtIndex(struct Node* head, int index)
+Node* getNodeAtIndex(Node* head, int index)
 {
     int cursor = -1;
     while( head->next != NULL && cursor != index )
@@ -84,9 +84,9 @@ struct Node* getNodeAtIndex(struct Node* head, int index)
 }
 
 
-void addNode(struct Node* head, int value)
+void addNode(Node* head, int value)
 {
-    struct Node *newNode    = (struct Node*)malloc(sizeof(struct Node)); // allocate memory
+    Node *newNode           = (Node*)malloc(sizeof(Node)); // allocate memory
     newNode->data           = value;  // set new node's data
     newNode->next           = NULL;   // this oe added to end => there is no next
     newNode->prev           = head->prev;  // previous node is last node (head->prev) 
@@ -99,9 +99,9 @@ void addNode(struct Node* head, int value)
 
 
 // dont use this function outside
-void addToStartHelper(struct Node* head, int value)
+void addToStartHelper(Node* head, int value)
 {   // this function only add newNode at head (not necessary head of the linked list)
-    struct Node *newNode = (struct Node*)malloc(sizeof(struct Node));
+    Node *newNode        = (Node*)malloc(sizeof(Node));
     newNode->data        = value;  // set data of new node
     newNode->next        = head->next;  // set next node of new node
     newNode->prev        = head;  // previous node of newNode is head
@@ -111,14 +111,14 @@ void addToStartHelper(struct Node* head, int value)
 }
 
 
-void addToStart(struct Node* head, int value)
+void addToStart(Node* head, int value)
 {   
     head->data++;  // increase size of linked list
     addToStartHelper(head,value);  
 }
 
 
-void addToIndex(struct Node* head, int index, int value)
+void addToIndex(Node* head, int index, int value)
 {  // move link to index and add newNode at first
     head->data++;
     addToStartHelper(getNodeAtIndex(head, index), value);
@@ -126,7 +126,7 @@ void addToIndex(struct Node* head, int index, int value)
 
 
 // dont use this function outside
-void removeOnlyOneNode(struct Node* head)
+void removeOnlyOneNode(Node* head)
 {  // this works only when there is one node in the list, and will remove it
    // then will free memory. 
     head->prev = NULL;
@@ -135,7 +135,7 @@ void removeOnlyOneNode(struct Node* head)
     head->data = 0;  // length=0
 }
 
-void removeFirst(struct Node* head)
+void removeFirst(Node* head)
 {
     if( head->next != NULL ){
         if( head->next == head->prev ){ // only one node
@@ -151,7 +151,7 @@ void removeFirst(struct Node* head)
 }
 
 
-void removeAtIndex(struct Node* head, int index)
+void removeAtIndex(Node* head, int index)
 {
     if( index==0 )
         removeFirst(head);
@@ -171,7 +171,7 @@ void removeAtIndex(struct Node* head, int index)
 }
 
 
-void removeLast(struct Node* head)
+void removeLast(Node* head)
 {
     if( head->prev != NULL ){
             // there is at least one node
@@ -188,7 +188,7 @@ void removeLast(struct Node* head)
 }
 
 
-int isContains(struct Node* head, int value)
+int isContains(Node* head, int value)
 {
     int cursor = 0;
     while( head != NULL )

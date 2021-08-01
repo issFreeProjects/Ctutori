@@ -1,4 +1,4 @@
-struct Node;
+typedef struct Node Node;
 
 // some initialization
 struct Node* initIntLinkedList();
