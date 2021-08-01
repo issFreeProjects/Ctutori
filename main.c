@@ -41,7 +41,7 @@ int main( int argc, char **argv )
 				removeAtIndex(nodePtr,5);
 				removeAtIndex(nodePtr,5000);
 
-				printIntLinkedList(nodePtr);
+				illPrint(nodePtr);
 				printf( "%d,%d,  length=%d\n",
 					     isContains(nodePtr,1151),
 						 isContains(nodePtr,66),

@@ -35,7 +35,7 @@ int illLenght(illNode* head)
 }
 
 
-void printIntLinkedList(illNode* head)
+void illPrint(illNode* head)
 {
     if( head == NULL )
         printf("[ NULL ]");
@@ -53,10 +53,10 @@ void printIntLinkedList(illNode* head)
 }
 
 
-void sPrintIntLinkedList(illNode* head, char *s)
+void sprintILL(illNode* head, char *s)
 {
     printf("%s", s);
-    printIntLinkedList(head);
+    illPrint(head);
 }
 
 

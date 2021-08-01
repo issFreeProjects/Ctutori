@@ -7,9 +7,8 @@ struct illNode* initIntLinkedList();
 int illLenght(struct illNode* node);
 
 // print
-void printIntLinkedList(struct illNode* node);
-void sPrintIntLinkedList(struct illNode* node, char *s);
-void pr(struct illNode* n);
+void illPrint(struct illNode* node);
+void sprintILL(struct illNode* node, char *s);
 
 
 // get pointer of last node
