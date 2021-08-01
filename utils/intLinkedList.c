@@ -11,17 +11,17 @@
     | length | o<----> | 2 | o<----> | # | o<--...
     +--------+---+     +---+---+     +---+---+      */
 
-struct Node {
+struct illNode {
     int data;           // at head, stors lengh of list, and for others, stors what you set
-    struct Node* next;  // stors pointer to the next node
-    struct Node* prev;  // at head, stors last node and for others, stors previous node (ptr to ...)
+    struct illNode* next;  // stors pointer to the next node
+    struct illNode* prev;  // at head, stors last node and for others, stors previous node (ptr to ...)
 };
 
 
-Node* initIntLinkedList()
+illNode* initIntLinkedList()
 {
-    Node* head = NULL;
-    head       = (Node*)malloc(sizeof(Node));
+    illNode* head = NULL;
+    head       = (illNode*)malloc(sizeof(illNode));
     head->data = 0;
     head->next = NULL;
     head->prev = NULL;
@@ -29,19 +29,19 @@ Node* initIntLinkedList()
 }
 
 
-int getListLen(Node* head)
+int getListLen(illNode* head)
 {
     return head->data;
 }
 
 
-void pr(Node* head)
+void pr(illNode* head)
 {
     printf("***debug=[%d,%d]", head->data, head->next);
 }
 
 
-void printIntLinkedList(Node* head)
+void printIntLinkedList(illNode* head)
 {
     if( head == NULL )
         printf("[ NULL ]");
@@ -59,20 +59,20 @@ void printIntLinkedList(Node* head)
 }
 
 
-void sPrintIntLinkedList(Node* head, char *s)
+void sPrintIntLinkedList(illNode* head, char *s)
 {
     printf("%s", s);
     printIntLinkedList(head);
 }
 
 
-Node* getlastNode(Node* head)
+illNode* getlastNode(illNode* head)
 {
     return head->prev;
 }
 
 
-Node* getNodeAtIndex(Node* head, int index)
+illNode* getNodeAtIndex(illNode* head, int index)
 {
     int cursor = -1;
     while( head->next != NULL && cursor != index )
@@ -84,9 +84,9 @@ Node* getNodeAtIndex(Node* head, int index)
 }
 
 
-void addNode(Node* head, int value)
+void addNode(illNode* head, int value)
 {
-    Node *newNode           = (Node*)malloc(sizeof(Node)); // allocate memory
+    illNode *newNode           = (illNode*)malloc(sizeof(illNode)); // allocate memory
     newNode->data           = value;  // set new node's data
     newNode->next           = NULL;   // this oe added to end => there is no next
     newNode->prev           = head->prev;  // previous node is last node (head->prev) 
@@ -99,9 +99,9 @@ void addNode(Node* head, int value)
 
 
 // dont use this function outside
-void addToStartHelper(Node* head, int value)
+void addToStartHelper(illNode* head, int value)
 {   // this function only add newNode at head (not necessary head of the linked list)
-    Node *newNode        = (Node*)malloc(sizeof(Node));
+    illNode *newNode        = (illNode*)malloc(sizeof(illNode));
     newNode->data        = value;  // set data of new node
     newNode->next        = head->next;  // set next node of new node
     newNode->prev        = head;  // previous node of newNode is head
@@ -111,14 +111,14 @@ void addToStartHelper(Node* head, int value)
 }
 
 
-void addToStart(Node* head, int value)
+void addToStart(illNode* head, int value)
 {   
     head->data++;  // increase size of linked list
     addToStartHelper(head,value);  
 }
 
 
-void addToIndex(Node* head, int index, int value)
+void addToIndex(illNode* head, int index, int value)
 {  // move link to index and add newNode at first
     head->data++;
     addToStartHelper(getNodeAtIndex(head, index), value);
@@ -126,7 +126,7 @@ void addToIndex(Node* head, int index, int value)
 
 
 // dont use this function outside
-void removeOnlyOneNode(Node* head)
+void removeOnlyOneNode(illNode* head)
 {  // this works only when there is one node in the list, and will remove it
    // then will free memory. 
     head->prev = NULL;
@@ -135,7 +135,7 @@ void removeOnlyOneNode(Node* head)
     head->data = 0;  // length=0
 }
 
-void removeFirst(Node* head)
+void removeFirst(illNode* head)
 {
     if( head->next != NULL ){
         if( head->next == head->prev ){ // only one node
@@ -151,12 +151,12 @@ void removeFirst(Node* head)
 }
 
 
-void removeAtIndex(Node* head, int index)
+void removeAtIndex(illNode* head, int index)
 {
     if( index==0 )
         removeFirst(head);
     else{
-        Node* toRm = getNodeAtIndex(head,index); // pointer to node that we will remove it
+        illNode* toRm = getNodeAtIndex(head,index); // pointer to node that we will remove it
         if( toRm->next == NULL ){  // selected node is at the end of list
             removeLast(head);
         }else{  // exist at least one node before it and one other after it
@@ -170,7 +170,7 @@ void removeAtIndex(Node* head, int index)
 }
 
 
-void removeLast(Node* head)
+void removeLast(illNode* head)
 {
     if( head->prev != NULL ){
             // there is at least one node
@@ -187,7 +187,7 @@ void removeLast(Node* head)
 }
 
 
-int isContains(Node* head, int value)
+int isContains(illNode* head, int value)
 {
     int cursor = 0;
     while( head != NULL )

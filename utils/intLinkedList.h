@@ -1,38 +1,38 @@
-typedef struct Node Node;
+typedef struct illNode illNode;
 
 // some initialization
-struct Node* initIntLinkedList();
+struct illNode* initIntLinkedList();
 
 // not sufficient fot big lists
-int getListLen(struct Node* node);
+int getListLen(struct illNode* node);
 
 // print
-void printIntLinkedList(struct Node* node);
-void sPrintIntLinkedList(struct Node* node, char *s);
-void pr(struct Node* n);
+void printIntLinkedList(struct illNode* node);
+void sPrintIntLinkedList(struct illNode* node, char *s);
+void pr(struct illNode* n);
 
 
 // get pointer of last node
-struct Node* getlastNode(struct Node* node);
+struct illNode* getlastNode(struct illNode* node);
 
 
 // add new node
-void addNode(struct Node* node, int value);
+void addNode(struct illNode* node, int value);
 
 
-void addToStart(struct Node* node, int value);
+void addToStart(struct illNode* node, int value);
 
 
-void addToIndex(struct Node* node, int index, int value);
+void addToIndex(struct illNode* node, int index, int value);
 
 
-void removeFirst(struct Node* node);
+void removeFirst(struct illNode* node);
 
 
-void removeAtIndex(struct Node* node, int index);
+void removeAtIndex(struct illNode* node, int index);
 
 
-void removeLast(struct Node* node);
+void removeLast(struct illNode* node);
 
 
-int isContains(struct Node* node, int index);
+int isContains(struct illNode* node, int index);
