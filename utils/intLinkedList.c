@@ -21,7 +21,7 @@ struct Node {
 Node* initIntLinkedList()
 {
     Node* head = NULL;
-    head = (Node*)malloc(sizeof(Node));
+    head       = (Node*)malloc(sizeof(Node));
     head->data = 0;
     head->next = NULL;
     head->prev = NULL;
@@ -158,7 +158,6 @@ void removeAtIndex(Node* head, int index)
     else{
         Node* toRm = getNodeAtIndex(head,index); // pointer to node that we will remove it
         if( toRm->next == NULL ){  // selected node is at the end of list
-            printf("** %d ** , index = %d\n", toRm->data, index);
             removeLast(head);
         }else{  // exist at least one node before it and one other after it
             head->data--;  // size decrease by -1
