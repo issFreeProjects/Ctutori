@@ -36,15 +36,15 @@ int main( int argc, char **argv )
 					illAdd(nodePtr, i);
 		
 				for(int i=0; i<901; i++)
-					removeFirst(nodePtr);
+					illRmTop(nodePtr);
 		
-				removeAtIndex(nodePtr,5);
-				removeAtIndex(nodePtr,5000);
+				illRmAtIndex(nodePtr,5);
+				illRmAtIndex(nodePtr,5000);
 
 				illPrint(nodePtr);
 				printf( "%d,%d,  length=%d\n",
-					     isContains(nodePtr,1151),
-						 isContains(nodePtr,66),
+					     illContains(nodePtr,1151),
+						 illContains(nodePtr,66),
 						 illLenght(nodePtr) ); 
 		}
 		if(strcmp(argv[1],"mmath")==0){  /*** Example of using mmath ***/

@@ -129,7 +129,8 @@ void removeOnlyOneNode(illNode* head)
     head->data = 0;  // length=0
 }
 
-void removeFirst(illNode* head)
+
+void illRmTop(illNode* head)
 {
     if( head->next != NULL ){
         if( head->next == head->prev ){ // only one node
@@ -145,14 +146,14 @@ void removeFirst(illNode* head)
 }
 
 
-void removeAtIndex(illNode* head, int index)
+void illRmAtIndex(illNode* head, int index)
 {
     if( index==0 )
-        removeFirst(head);
+        illRmTop(head);
     else{
         illNode* toRm = illGetAtIndex(head,index); // pointer to node that we will remove it
         if( toRm->next == NULL ){  // selected node is at the end of list
-            removeLast(head);
+            illRmLast(head);
         }else{  // exist at least one node before it and one other after it
             head->data--;  // size decrease by -1
             (toRm->prev)->next = toRm->next; // next of before node is next of toRm
@@ -164,7 +165,7 @@ void removeAtIndex(illNode* head, int index)
 }
 
 
-void removeLast(illNode* head)
+void illRmLast(illNode* head)
 {
     if( head->prev != NULL ){
             // there is at least one node
@@ -181,7 +182,7 @@ void removeLast(illNode* head)
 }
 
 
-int isContains(illNode* head, int value)
+int illContains(illNode* head, int value)
 {
     int cursor = 0;
     while( head != NULL )
