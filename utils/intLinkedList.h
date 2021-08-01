@@ -27,13 +27,13 @@ void illAddToTop(illNode* node, int value);
 void illAddToIndex(illNode* node, int index, int value);
 
 
-void illRmTop(struct illNode* node);
+void illRmTop(illNode* node);
 
 
-void illRmAtIndex(struct illNode* node, int index);
+void illRmAtIndex(illNode* node, int index);
 
 
-void illRmLast(struct illNode* node);
+void illRmLast(illNode* node);
 
 
-int illContains(struct illNode* node, int index);
+int illContains(illNode* node, int index);
