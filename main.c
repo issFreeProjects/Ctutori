@@ -45,7 +45,7 @@ int main( int argc, char **argv )
 				printf( "%d,%d,  length=%d\n",
 					     isContains(nodePtr,1151),
 						 isContains(nodePtr,66),
-						 getListLen(nodePtr) ); 
+						 illLenght(nodePtr) ); 
 		}
 		if(strcmp(argv[1],"mmath")==0){  /*** Example of using mmath ***/
 			printf("a=378, b=1386 => GCD=%d , LCM=%d\n", findGCD(378,1386), mlcm(378,1386));

@@ -4,7 +4,7 @@ typedef struct illNode illNode;
 struct illNode* initIntLinkedList();
 
 // not sufficient fot big lists
-int getListLen(struct illNode* node);
+int illLenght(struct illNode* node);
 
 // print
 void printIntLinkedList(struct illNode* node);

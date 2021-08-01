@@ -29,15 +29,9 @@ illNode* initIntLinkedList()
 }
 
 
-int getListLen(illNode* head)
+int illLenght(illNode* head)
 {
     return head->data;
-}
-
-
-void pr(illNode* head)
-{
-    printf("***debug=[%d,%d]", head->data, head->next);
 }
 
 
