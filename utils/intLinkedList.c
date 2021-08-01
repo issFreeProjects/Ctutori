@@ -11,12 +11,6 @@
     | length | o<----> | 2 | o<----> | # | o<--...
     +--------+---+     +---+---+     +---+---+      */
 
-struct illNode {
-    int data;           // at head, stors lengh of list, and for others, stors what you set
-    struct illNode* next;  // stors pointer to the next node
-    struct illNode* prev;  // at head, stors last node and for others, stors previous node (ptr to ...)
-};
-
 
 illNode* initIntLinkedList()
 {
@@ -32,31 +26,6 @@ illNode* initIntLinkedList()
 int illLenght(illNode* head)
 {
     return head->data;
-}
-
-
-void illPrint(illNode* head)
-{
-    if( head == NULL )
-        printf("[ NULL ]");
-    if( head->next == NULL )
-        printf("[]\n");
-    else{
-        head = head->next; // do not print default head!
-        printf("[");
-        while (head != NULL) {
-            printf( " %d ", head->data );
-            head = head->next;
-        }
-        printf("]\n");
-    }
-}
-
-
-void sprintILL(illNode* head, char *s)
-{
-    printf("%s", s);
-    illPrint(head);
 }
 
 
@@ -193,4 +162,32 @@ int illContains(illNode* head, int value)
         else head = head->next;
     }
     return -1;
+}
+
+
+/*
+ *      use this functions to print illNode
+ */
+void illPrint(illNode* head)
+{
+    if( head == NULL )
+        printf("[ NULL ]");
+    if( head->next == NULL )
+        printf("[]\n");
+    else{
+        head = head->next; // do not print default head!
+        printf("[");
+        while (head != NULL) {
+            printf( " %d ", head->data );
+            head = head->next;
+        }
+        printf("]\n");
+    }
+}
+
+
+void sprintILL(illNode* head, char *s)
+{
+    printf("%s", s);
+    illPrint(head);
 }
