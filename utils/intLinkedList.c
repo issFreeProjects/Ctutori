@@ -156,7 +156,7 @@ void removeAtIndex(Node* head, int index)
     if( index==0 )
         removeFirst(head);
     else{
-        struct Node* toRm = getNodeAtIndex(head,index); // pointer to node that we will remove it
+        Node* toRm = getNodeAtIndex(head,index); // pointer to node that we will remove it
         if( toRm->next == NULL ){  // selected node is at the end of list
             printf("** %d ** , index = %d\n", toRm->data, index);
             removeLast(head);
