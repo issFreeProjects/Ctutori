@@ -1,5 +1,20 @@
 #include "illNode.h"
 
+/**
+ * 
+ *      this is intLinkedList (briefly ill) header file
+ *      and this module uses illNode struct and implements simple and fast linked list
+ *      Ex:  
+ *           head               second        third
+ *           |                  |             |
+ *           |                  |             |
+ *           +--------+---+     +---+---+     +---+---+
+ *           | length | o<----> | 2 | o<----> | # | o<--...
+ *           +--------+---+     +---+---+     +---+---+
+ * 
+ *      you can use any of following functions on illNode struct
+ */
+
 
 // some initialization
 illNode* initIntLinkedList();

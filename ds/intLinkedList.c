@@ -2,13 +2,6 @@
 #include <stdlib.h>
 #include <illNode.h>
 
-/* 
-    head               second        third
-    |                  |             |
-    |                  |             |
-    +--------+---+     +---+---+     +---+---+
-    | length | o<----> | 2 | o<----> | # | o<--...
-    +--------+---+     +---+---+     +---+---+      */
 
 
 illNode* initIntLinkedList()
