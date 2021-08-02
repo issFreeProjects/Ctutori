@@ -5,12 +5,18 @@
  *      this is intLinkedList (briefly ill) header file
  *      and this module uses illNode struct and implements simple and fast linked list
  *      Ex:  
- *           head               second        third
- *           |                  |             |
- *           |                  |             |
- *           +--------+---+     +---+---+     +---+---+
- *           | length | o<----> | 2 | o<----> | # | o<--...
- *           +--------+---+     +---+---+     +---+---+
+ *           head               first         second                    end
+ *           |                  |             |                         |
+ *           |                  |             |                         |
+ *           +-------------+    +--------+    +--------+                +-----------+
+ *           | data=length |    | data=# |    | data=# |                | data=#    |
+ *           +-------------+    +--------+    +--------+                +-----------+
+ *           | next -------|--> | next --|--> | next --|--------------> | next=NULL |
+ *           +-------------+    +--------+    +--------+                +-----------+
+ *      -----|------- prev | <--|-- prev | <--|-- prev | <--------------|----- prev | <------      
+ *      |    +-------------+    +--------+    +--------+                +-----------+       |
+ *      |                                                                                   |
+ *      |------------------------------------------------------------------------------------
  * 
  *      you can use any of following functions on illNode struct
  */
