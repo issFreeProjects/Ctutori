@@ -7,11 +7,11 @@
 
 #include <stdio.h>
 #include <string.h>
-#include "utils/illNode.h"
-#include <utils/sortIll.h>
+#include "ds/illNode.h"
+#include <utils/sort.h>
 #include <utils/ptrs.h>
 #include <utils/pprint.h>
-#include <utils/intLinkedList.h>
+#include <ds/intLinkedList.h>
 #include <utils/mmath.h>
 
 int main( int argc, char **argv )
@@ -53,12 +53,12 @@ int main( int argc, char **argv )
 				if(strcmp(argv[1],"intLinkedList")==0 && strcmp(argv[2],"sort")==0)
 				{
 					illNode* nodePtr = initIntLinkedList();
-					for(int i=0; i<1500; i++)
+					for(int i=0; i<50; i++)
 						illAdd(nodePtr, i);
 					
-					//illPrint(nodePtr);
+					illPrint(nodePtr);
 					illBubbleSort(nodePtr);
-					//illPrint(nodePtr);
+					illPrint(nodePtr);
 				}
 			}
 		}
