@@ -9,6 +9,8 @@ int illLenght(illNode* node);
 illNode* illLastNode(illNode* node);
 // get pointer of node at index
 illNode* illGetAtIndex(illNode* head, int index);
+// get data (int) of node at index in list
+int illData(illNode* head, int index)
 
 
 // add new node at end

@@ -48,6 +48,12 @@ illNode* illGetAtIndex(illNode* head, int index)
 }
 
 
+int illData(illNode* head, int index)
+{
+    return( illGetAtIndex(head,index) -> data );
+}
+
+
 void illAdd(illNode* head, int value)
 {
     illNode *newNode           = (illNode*)malloc(sizeof(illNode)); // allocate memory
