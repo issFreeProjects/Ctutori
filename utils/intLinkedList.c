@@ -65,7 +65,7 @@ void illAdd(illNode* head, int value)
 // dont use this function outside
 void addToStartHelper(illNode* head, int value)
 {   // this function only add newNode at head (not necessary head of the linked list)
-    illNode *newNode        = (illNode*)malloc(sizeof(illNode));
+    illNode *newNode     = (illNode*)malloc(sizeof(illNode));
     newNode->data        = value;  // set data of new node
     newNode->next        = head->next;  // set next node of new node
     newNode->prev        = head;  // previous node of newNode is head
@@ -149,6 +149,14 @@ void illRmLast(illNode* head)
                 (head->prev)->next = NULL;
             }
     }
+}
+
+
+void illReplace(illNode* n1, illNode* n2)
+{
+    int tmp = n1->data;
+    n1->data = n2->data;
+    n2->data = tmp;
 }
 
 

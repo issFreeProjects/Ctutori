@@ -32,3 +32,8 @@ void illRmLast(illNode* node);
 // returns 0 if value contains in list
 // returns -1 eles
 int illContains(illNode* node, int value);
+
+
+// replacement
+// replace two node in list n1, n2 (illNode pointer)
+void illReplace(illNode* n1, illNode* n2);
