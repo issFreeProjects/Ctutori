@@ -9,6 +9,7 @@
 CC      = gcc
 ODIR	= build
 UDIR    = utils
+DSDIR   = ds
 CFLAGS  = -I .
 OCFLAGS = -I $(UDIR)
 
@@ -29,8 +30,10 @@ $(ODIR)/%.o: %.h
 	$(CC) $(CFLAGS) -c $< -o $@
 ## just for utils/*.[ch] files
 $(ODIR)/%.o: $(UDIR)/%.c $(UDIR)/%.h
-	$(CC) $(OCFLAGS) -c $< -o $@
-
+	$(CC) -I utils -c $< -o $@
+## just for ds/*.[ch] files
+$(ODIR)/%.o: $(DSDIR)/%.c $(DSDIR)/%.h
+	$(CC) -I ds -c $< -o $@
 
 # compiling main.c and linking .o files to exec file
 main: $(OBJ) main.c
