@@ -1,6 +1,7 @@
 #include <intLinkedList.h>
 #include <stdlib.h>
 #include <illNode.h>
+#include <stdio.h>
 
 
 
@@ -175,4 +176,49 @@ int illContains(illNode* head, int value)
         else head = head->next;
     }
     return -1;
+}
+
+
+
+/**
+ *      printing functions
+ */
+void illPrint(illNode* head)
+{
+    if( head == NULL )
+        printf("[ NULL ]");
+    if( head->next == NULL )
+        printf("[]\n");
+    else{
+        head = head->next; // do not print default head!
+        printf("[");
+        while (head != NULL) {
+            printf( " %d ", head->data );
+            head = head->next;
+        }
+        printf("]\n");
+    }
+}
+
+
+void sprintILL(illNode* head, char *s)
+{
+    printf("%s", s);
+    illPrint(head);
+}
+
+
+
+/**
+ *      sorting functions
+ */
+void illBubbleSort(illNode* head)
+{
+    if(illLenght(head)>1)
+        for(int p=illLenght(head); p>1; p--)
+        {
+            for(int i=0; i<p-1; i++)
+                if( illData(head,i) < illData(head,i+1) )
+                    illReplaceIndex(head,i,i+1);
+        }
 }

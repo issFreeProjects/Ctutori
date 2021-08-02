@@ -62,3 +62,21 @@ int illContains(illNode* node, int value);
 void illReplace(illNode* n1, illNode* n2);
 // replace by index (data at index i1 and i2 will replace)
 void illReplaceIndex(illNode* head, int i1, int i2);
+
+
+/**
+ *      here is some printing methods
+ */
+// print illNode like [a1, a2, ..., an]
+void illPrint(illNode* head);
+// print char *s before illPrint(illNode* head)
+void sprintILL(illNode* head, char *s);
+
+
+
+/**
+ *      here is some sorting algorithms for this datastructure
+ */
+
+// Bubble sort sorting algorithm - pass head of illNode struct
+void illBubbleSort(illNode* head);
