@@ -179,6 +179,16 @@ int illContains(illNode* head, int value)
 }
 
 
+void illFree(illNode* head)
+{
+    while ( head->next != NULL )
+    {
+        head = head->next;
+        free(head->prev);
+    }
+    free(head);
+}
+
 
 /**
  *      printing functions

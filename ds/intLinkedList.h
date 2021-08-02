@@ -64,6 +64,12 @@ void illReplace(illNode* n1, illNode* n2);
 void illReplaceIndex(illNode* head, int i1, int i2);
 
 
+// dont try to free this structure by using free(head)
+// only use followiing function
+void illFree(illNode* head);
+
+
+
 /**
  *      here is some printing methods
  */
