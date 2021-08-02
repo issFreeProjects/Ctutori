@@ -1,6 +1,5 @@
 /*
  * main.c file 
- * only include and use other modules
  * created at 24/7/2021
  *
  * */
@@ -10,62 +9,90 @@
 #include "ds/illNode.h"
 #include <utils/sort.h>
 #include <utils/ptrs.h>
+#include <utils/mmath.h>
 #include <utils/pprint.h>
 #include <ds/intLinkedList.h>
-#include <utils/mmath.h>
 
+
+
+/**
+ * 		Example functions
+ * 		you can lean using modules by them
+ * 		almost all useful functions of modules is here!
+ */
+void ptrsEx()
+{
+	// using bubbleSort method for arrays
+	int arr[9] = {1,2,0,10,3,-4,-2,0,100};
+	bubbleSort(arr,9);
+	printIntArr(arr,9);
+	sprintIntArr("cert = ", NULL, 0); printf("\n");
+	// using displayBits method
+	unsigned n;
+	scanf("%u", &n);
+	displayBits(n);
+}
+
+
+void intLinkedListEx()
+{   // how to use intLinkedList without sorting functions
+	illNode* nodePtr = initIntLinkedList();
+	for(int i=0; i<1000; i++)
+		illAdd(nodePtr, i);
+	for(int i=0; i<901; i++)
+		illRmTop(nodePtr);
+		
+	illRmAtIndex(nodePtr,5);
+	illRmAtIndex(nodePtr,5000);
+
+	illPrint(nodePtr);
+	printf( "%d,%d,  length=%d\n",
+		    illContains(nodePtr,1151),
+			illContains(nodePtr,66),
+			illLenght(nodePtr) );
+	illFree(nodePtr);
+}
+
+
+void intLinkedList_sortEx()
+{   // how to use sorting functions in intLinkedList module
+	illNode* nodePtr = initIntLinkedList();
+	for(int i=0; i<50; i++)
+		illAdd(nodePtr, i);
+				
+	illPrint(nodePtr);
+	illBubbleSort(nodePtr);
+	illPrint(nodePtr);
+	illFree(nodePtr);
+}
+
+
+void mmathEx()
+{   // how to use mmath module
+	printf("a=378, b=1386 => GCD=%d , LCM=%d\n", findGCD(378,1386), mlcm(378,1386));
+	printf("fibo(20)=%d", fibo(7));
+}
+
+
+
+/**
+ * 		int main method
+ */
 int main( int argc, char **argv )
 {
 	if( argc == 1 )
 		printf("it works :) \n");
-	if( argc > 1 )
-	{
-		if(strcmp(argv[1],"ptrs")==0){  /*** Example of using pprint modlue ***/
-				int arr[9] = {1,2,0,10,3,-4,-2,0,100};
-				bubbleSort(arr,9);
-				printIntArr(arr,9);
+	if( argc == 2 && strcmp(argv[1],"ptrs")==0 )  /*** Example of using ptrs modlue ***/
+		ptrsEx();
 
-				sprintIntArr("cert = ", NULL, 0); printf("\n");
-				printf("chert = {%d}\n",test());
+	if( argc == 2 && strcmp(argv[1],"intLinkedList")==0 )  /*** Example of using int linked list ***/
+		intLinkedListEx();
 
-				unsigned n;
-				scanf("%u", &n);
-				displayBits(n);
-		}
-		if(strcmp(argv[1],"intLinkedList")==0){  /*** Example of using int linked list ***/
-			if( argc == 2 ){
-				illNode* nodePtr = initIntLinkedList();
-				for(int i=0; i<1000; i++)
-					illAdd(nodePtr, i);
-		
-				for(int i=0; i<901; i++)
-					illRmTop(nodePtr);
-		
-				illRmAtIndex(nodePtr,5);
-				illRmAtIndex(nodePtr,5000);
+	if( argc == 3 && strcmp(argv[1],"intLinkedList")==0 
+				  && strcmp(argv[2],"sort")==0 )  /*** Example of using int linked list + sorting algorithms ***/
+		intLinkedList_sortEx();
 
-				illPrint(nodePtr);
-				printf( "%d,%d,  length=%d\n",
-					     illContains(nodePtr,1151),
-						 illContains(nodePtr,66),
-						 illLenght(nodePtr) );
-			} else if( argc == 3 ){
-				if(strcmp(argv[1],"intLinkedList")==0 && strcmp(argv[2],"sort")==0)
-				{
-					illNode* nodePtr = initIntLinkedList();
-					for(int i=0; i<50; i++)
-						illAdd(nodePtr, i);
-					
-					illPrint(nodePtr);
-					illBubbleSort(nodePtr);
-					illPrint(nodePtr);
-				}
-			}
-		}
-		if(strcmp(argv[1],"mmath")==0){  /*** Example of using mmath ***/
-			printf("a=378, b=1386 => GCD=%d , LCM=%d\n", findGCD(378,1386), mlcm(378,1386));
-			printf("fibo(20)=%d", fibo(7));
-		}
-	}
-	return 10;
+	if( argc == 2 && strcmp(argv[1],"mmath")==0 )  /*** Example of using mmath ***/
+		mmathEx();
+	return 0;
 }
