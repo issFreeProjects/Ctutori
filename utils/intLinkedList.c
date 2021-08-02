@@ -2,6 +2,7 @@
 #include <pprint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <illNode.h>
 
 /* 
     head               second        third

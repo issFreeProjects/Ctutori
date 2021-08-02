@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include "utils/illNode.h"
 #include <utils/ptrs.h>
 #include <utils/pprint.h>
 #include <utils/intLinkedList.h>

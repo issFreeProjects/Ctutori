@@ -35,7 +35,7 @@ $(ODIR)/%.o: $(UDIR)/%.c $(UDIR)/%.h
 # compiling main.c and linking .o files to exec file
 main: $(OBJ) main.c
 	$(CC) $(CFLAGS) -c main.c -o $(ODIR)/main.o
-	$(CC) -o $@ $(OBJ) $(CFLAGS)
+	$(CC) -o $@ $(OBJ) $(OCFLAGS)
 
 
 # clean
