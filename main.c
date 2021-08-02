@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "utils/illNode.h"
+#include <utils/sortIll.h>
 #include <utils/ptrs.h>
 #include <utils/pprint.h>
 #include <utils/intLinkedList.h>
@@ -32,6 +33,7 @@ int main( int argc, char **argv )
 				displayBits(n);
 		}
 		if(strcmp(argv[1],"intLinkedList")==0){  /*** Example of using int linked list ***/
+			if( argc == 2 ){
 				illNode* nodePtr = initIntLinkedList();
 				for(int i=0; i<1000; i++)
 					illAdd(nodePtr, i);
@@ -46,7 +48,19 @@ int main( int argc, char **argv )
 				printf( "%d,%d,  length=%d\n",
 					     illContains(nodePtr,1151),
 						 illContains(nodePtr,66),
-						 illLenght(nodePtr) ); 
+						 illLenght(nodePtr) );
+			} else if( argc == 3 ){
+				if(strcmp(argv[1],"intLinkedList")==0 && strcmp(argv[2],"sort")==0)
+				{
+					illNode* nodePtr = initIntLinkedList();
+					for(int i=0; i<1500; i++)
+						illAdd(nodePtr, i);
+					
+					//illPrint(nodePtr);
+					illBubbleSort(nodePtr);
+					//illPrint(nodePtr);
+				}
+			}
 		}
 		if(strcmp(argv[1],"mmath")==0){  /*** Example of using mmath ***/
 			printf("a=378, b=1386 => GCD=%d , LCM=%d\n", findGCD(378,1386), mlcm(378,1386));
