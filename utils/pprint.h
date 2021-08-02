@@ -1,4 +1,4 @@
-#include "illNode.h"
+#include "../ds/illNode.h"
 
 int test();
 // print an int array like [1, 2, 3]
