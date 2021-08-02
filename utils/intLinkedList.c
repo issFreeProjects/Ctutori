@@ -164,31 +164,3 @@ int illContains(illNode* head, int value)
     }
     return -1;
 }
-
-
-/*
- *      use this functions to print illNode
- */
-void illPrint(illNode* head)
-{
-    if( head == NULL )
-        printf("[ NULL ]");
-    if( head->next == NULL )
-        printf("[]\n");
-    else{
-        head = head->next; // do not print default head!
-        printf("[");
-        while (head != NULL) {
-            printf( " %d ", head->data );
-            head = head->next;
-        }
-        printf("]\n");
-    }
-}
-
-
-void sprintILL(illNode* head, char *s)
-{
-    printf("%s", s);
-    illPrint(head);
-}

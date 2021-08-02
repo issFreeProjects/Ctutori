@@ -32,9 +32,3 @@ void illRmLast(illNode* node);
 // returns 0 if value contains in list
 // returns -1 eles
 int illContains(illNode* node, int value);
-
-
-// print illNode like [a1, a2, ..., an]
-void illPrint(illNode* head);
-// print char *s before illPrint(illNode* head)
-void sprintILL(illNode* head, char *s);
