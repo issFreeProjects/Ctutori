@@ -1,6 +1,5 @@
 #include <intLinkedList.h>
 #include <pprint.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include <illNode.h>
 
@@ -163,6 +162,13 @@ void illReplace(illNode* n1, illNode* n2)
     int tmp = n1->data;
     n1->data = n2->data;
     n2->data = tmp;
+}
+
+
+void illReplaceIndex(illNode* head, int i1, int i2)
+{
+    if( i1>-1 && i2>-1 && i1<illLenght(head) && i2<illLenght(head) )
+        illReplace( illGetAtIndex(head,i1), illGetAtIndex(head,i2) );
 }
 
 

@@ -10,7 +10,7 @@ illNode* illLastNode(illNode* node);
 // get pointer of node at index
 illNode* illGetAtIndex(illNode* head, int index);
 // get data (int) of node at index in list
-int illData(illNode* head, int index)
+int illData(illNode* head, int index);
 
 
 // add new node at end
@@ -39,3 +39,5 @@ int illContains(illNode* node, int value);
 // replacement
 // replace two node in list n1, n2 (illNode pointer)
 void illReplace(illNode* n1, illNode* n2);
+// replace by index (data at index i1 and i2 will replace)
+void illReplaceIndex(illNode* head, int i1, int i2);
