@@ -4,7 +4,8 @@
  * 
  *      this is intLinkedList (briefly ill) header file
  *      and this module uses illNode struct and implements simple and fast linked list
- *      Ex:  
+ *      Pr: 
+ *           index=-1           index=0       index=1                   index=length-1
  *           head               first         second                    end
  *           |                  |             |                         |
  *           |                  |             |                         |
@@ -18,7 +19,7 @@
  *      |                                                                                   |
  *      |------------------------------------------------------------------------------------
  * 
- *      you can use any of following functions on illNode struct
+ *      you must first call initIntLinkedList() to create new ill
  */
 
 
