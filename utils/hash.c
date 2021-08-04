@@ -8,5 +8,5 @@ int PJWhash( int h ){
         h = h ^ (g >> 24);          //   move them to the low end of h
         h = h ^ g;
     // The top 4 bits of h are again all zero
-    return h;
+    return ( h & 127 );
 }

@@ -6,6 +6,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <utils/hash.h>
 #include "ds/illNode.h"
 #include <utils/sort.h>
 #include <utils/ptrs.h>
@@ -74,6 +75,17 @@ void mmathEx()
 }
 
 
+void hashEx()
+{
+	for( int i=0; i<=20; i++ ){
+		printf("PJWhash(%i)=%d , ", i, PJWhash(i));
+	if( i%5 == 0 )
+		printf("\n");
+	}
+}
+
+
+
 
 /**
  * 		int main method
@@ -94,5 +106,7 @@ int main( int argc, char **argv )
 
 	if( argc == 2 && strcmp(argv[1],"mmath")==0 )  /*** Example of using mmath ***/
 		mmathEx();
+	if( argc == 2 && strcmp(argv[1],"hash")==0 )  /*** Example of using hash ***/
+		hashEx();
 	return 0;
 }
