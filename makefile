@@ -14,7 +14,7 @@ CFLAGS  = -I .
 OCFLAGS = -I $(UDIR)
 
 
-_OBJ    = ptrs.o pprint.o hash.o intLinkedList.o mmath.o sort.o main.o
+_OBJ    = ptrs.o pprint.o hash.o mmath.o sort.o intLinkedList.o binarySearchTree.o main.o
 # create .o path: build/example.o
 OBJ     = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
