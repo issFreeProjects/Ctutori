@@ -8,7 +8,37 @@ bsTree* initBSTree(int headData)
 {
     bsTree* head = (bsTree*)malloc(sizeof(bsTree*));
     head->data = headData;
+    head->lChild = NULL;
+    head->rChild = NULL;
     return head;
+}
+
+
+void bstAdd( bsTree* head, int value )
+{
+    bsTree* newNode = (bsTree*)malloc(sizeof(bsTree*));
+    newNode->data = value;
+    newNode->lChild = NULL;
+    newNode->rChild = NULL;
+
+    while (1==1)
+    {
+       if( head->data > value ){
+           if( head->lChild != NULL )
+                head = head->lChild;
+            else{
+                 head->lChild = newNode;
+                 break;
+            }
+       }else if (head->data < value){
+             if( head->rChild != NULL )
+                head = head->rChild;
+            else {
+                head->rChild = newNode;
+                break;
+            }
+       } else break;
+    }
 }
 
 
