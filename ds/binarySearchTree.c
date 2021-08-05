@@ -6,27 +6,29 @@
 
 bsTree* initBSTree(int headData)
 {
-    bsTree* head = (bsTree*)malloc(sizeof(bsTree*));
+    bsTree* head = (bsTree*)malloc(sizeof(bsTree));
     head->data = headData;
     head->lChild = NULL;
     head->rChild = NULL;
+    head->parent = NULL;
     return head;
 }
 
 
 void bstAdd( bsTree* head, int value )
 {
-    bsTree* newNode = (bsTree*)malloc(sizeof(bsTree*));
+    bsTree* newNode = (bsTree*)malloc(sizeof(bsTree));
     newNode->data = value;
     newNode->lChild = NULL;
     newNode->rChild = NULL;
-
-    while (1==1)
+    
+    while (1)
     {
        if( head->data > value ){
            if( head->lChild != NULL )
                 head = head->lChild;
             else{
+                newNode->parent = head;
                  head->lChild = newNode;
                  break;
             }
@@ -34,6 +36,7 @@ void bstAdd( bsTree* head, int value )
              if( head->rChild != NULL )
                 head = head->rChild;
             else {
+                newNode->parent = head;
                 head->rChild = newNode;
                 break;
             }
@@ -102,7 +105,7 @@ int _print_t(bsTree *tree, int is_left, int offset, int depth, char s[20][255])
 // print bst
 void bstPrint(bsTree *head)
 {
-    char s[20][255];
+    char s[30][255];
     for (int i = 0; i < 20; i++)
         sprintf(s[i], "%80s", " ");
 
