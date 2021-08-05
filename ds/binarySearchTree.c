@@ -45,6 +45,44 @@ void bstAdd( bstNode* head, int value )
 }
 
 
+bstNode* bstSearchByValue( bstNode* head, int value )
+{
+    while( head != NULL )
+    {
+        if( head->data == value )
+            return head;
+        else if( head->data > value )
+            head = head->lChild;
+        else head = head->rChild;
+    }
+    return NULL;
+}
+
+
+int bstIsExist( bstNode* head, int value )
+{
+    if( bstSearchByValue(head,value) != NULL )
+        return 0;
+    else return -1;
+}
+
+
+bstNode* bstMAX(bstNode* head)
+{
+    while ( head->rChild != NULL )
+        head = head->rChild;
+    return head;
+}   
+
+
+bstNode* bstMIN(bstNode* head)
+{
+    while ( head->lChild != NULL )
+        head = head->lChild;
+    return head;
+}
+
+
 // internal method
 int _print_t(bstNode *tree, int is_left, int offset, int depth, char s[20][255])
 {

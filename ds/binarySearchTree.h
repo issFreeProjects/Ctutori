@@ -27,5 +27,15 @@ bstNode* initBSTree(int headData);
 void bstAdd( bstNode* head, int value );
 
 
+// search
+bstNode* bstSearchByValue(bstNode* head, int value);
+int bstIsExist( bstNode* head, int value );
+
+// min and max
+bstNode* bstMIN(bstNode* head);
+bstNode* bstMAX(bstNode* head);
+
+
+
 // use it for print a tree
 void bstPrint(bstNode *head);
