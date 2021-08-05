@@ -1,4 +1,4 @@
-#include "bstree.h"
+#include "bstNode.h"
 
 /**
  *      This is a simple implementation of binary search tree
@@ -21,11 +21,11 @@
 
 
 // some initialize, headData is value of head node
-bsTree* initBSTree(int headData);
+bstNode* initBSTree(int headData);
 
 // add new node to tree
-void bstAdd( bsTree* head, int value );
+void bstAdd( bstNode* head, int value );
 
 
 // use it for print a tree
-void bstPrint(bsTree *head);
+void bstPrint(bstNode *head);
