@@ -1,5 +1,5 @@
-#ifndef ILL_NODE
-#define ILL_NODE
+#ifndef BST_NODE
+#define BST_NODE
 
 typedef struct bsTree bsTree;
 struct bsTree{
