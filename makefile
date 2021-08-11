@@ -41,17 +41,19 @@ $(ODIR)/%.o: $(DSDIR)/%.c $(DSDIR)/%.h
 $(ODIR)/%.so: $(LDIR)/%.c $(LDIR)/%.h
 	$(CC) -I lib -fPIC -shared -lc $< -o $@
 
+
+# ordinary make  -- static library --
 # compiling main.c and linking .o files to exec file
 main: $(OBJ) main.c
 	$(CC) $(CFLAGS)  -c main.c -o $(ODIR)/main.o
 	$(CC) $(OCFLAGS) -o $@ $(OBJ) $(SOBJ)
 
 
-# alternative main - this will make binary with runtime library
-# set Env variables or copy .so files in /lib or /lib64 ...
+# alternative main  -- dynamic library --
+# copy build/.so files in /usr/lib, or /usr/local/lib
 # without that, binary wont work
-# Env variables:
-#		export 
+# if you want use Env. variables (or dont want to use /lib), use this:
+# 		export LD_LIBRARY_PATH="$(pwd)/build"
 runtime_main: $(OBJ) main.c
 	$(CC) $(CFLAGS)  -c main.c -o $(ODIR)/main.o
 	$(CC) $(OCFLAGS) -o $@ $(OBJ) -L $(ODIR) -lQrcodegen
@@ -60,4 +62,4 @@ runtime_main: $(OBJ) main.c
 # clean
 .PHONY: clean
 clean:
-	rm -f $(ODIR)/*.o
+	rm -f $(ODIR)/*.o $(ODIR)/*.so
