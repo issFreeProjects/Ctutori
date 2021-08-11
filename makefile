@@ -1,9 +1,14 @@
-#####################################################
-#				projects make file					#
-#				24  -  07  -  2021					#
-#	run ``` make ```  to make project 				#
-#	and``` make clean ```` to remove object files	#
-#####################################################
+#######################################################################################
+#   this is the main project make file                                                #
+#   created at: 24-07-2021                                                            #
+#                                                                                     #
+#   run ``` make ```               to make the project --static  libraries--          #
+#   run ``` make runtime_main ```  to make the project --dynamic libraries--          #
+#   	you will need to copy build/*.so files in /usr/lib, or /usr/local/lib         #
+#   	or use environment variables: ``` export LD_LIBRARY_PATH="$(pwd)/build" ```   #
+#                                                                                     #
+#   and ``` make clean ```` to remove object files                                    #
+#######################################################################################
 
 # flags and .o files definition
 CC      = gcc
