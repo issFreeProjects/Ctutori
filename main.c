@@ -6,13 +6,16 @@
 
 #include <stdio.h>
 #include <string.h>
+
 #include <utils/hash.h>
-#include "ds/illNode.h"
 #include <utils/sort.h>
 #include <utils/ptrs.h>
 #include <utils/mmath.h>
 #include <utils/pprint.h>
+
+#include <ds/intStack.h>
 #include <ds/intLinkedList.h>
+#include <ds/binarySearchTree.h>
 
 
 
@@ -85,6 +88,27 @@ void hashEx()
 }
 
 
+void binarySearchTreeEx()
+{
+	bstNode* myBST = initBSTree(5);
+	printf("adding nodes to bst: ");
+	for(int i=0; i<30; i++){
+		printf("%d, ", (5*i+13)%19+1);
+		bstAdd(myBST,  (5*i+13)%19+1);
+	}
+	printf("\n");
+	bstPrint(myBST);
+	printf("address of 5,12 and existance of -5 are: %d, %d, %d\n", 
+		bstSearchByValue(myBST,5), bstSearchByValue(myBST,12), bstIsExist(myBST, -5));
+
+	printf("min=%d , max=%d\n", bstMIN(myBST)->data, bstMAX(myBST)->data);
+}
+
+
+void intStackEx()
+{
+	illNode* head = initIntStack();
+}
 
 
 /**
@@ -106,7 +130,14 @@ int main( int argc, char **argv )
 
 	if( argc == 2 && strcmp(argv[1],"mmath")==0 )  /*** Example of using mmath ***/
 		mmathEx();
+	
 	if( argc == 2 && strcmp(argv[1],"hash")==0 )  /*** Example of using hash ***/
 		hashEx();
+	
+	if( argc == 2 && strcmp(argv[1],"binarySearchTree")==0)
+		binarySearchTreeEx();
+	
+	if( argc == 2 && strcmp(argv[1],"intStack")==0)
+		intStackEx();
 	return 0;
 }
