@@ -17,6 +17,7 @@
 #include <ds/intLinkedList.h>
 #include <ds/binarySearchTree.h>
 
+#include <lib/libQrcodegen.h>
 
 
 /**
