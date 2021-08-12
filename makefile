@@ -11,22 +11,27 @@
 #######################################################################################
 
 CC      = gcc
+CP		= cp
+RM		= rm -f
 ODIR	= build
 UDIR    = utils
 LDIR	= lib
 DSDIR   = ds
 CFLAGS  = -I
 
-
+## edit this part when you need to compile new file - add [filename].o to _OBJ
+#  if you need to compile library:
+#		add lib[lib name].so   to  _SOBJ and,
+#		-l[lib name]           to  LFLAGS.
 _OBJ    = ptrs.o pprint.o hash.o mmath.o sort.o intLinkedList.o binarySearchTree.o intStack.o main.o
 _SOBJ	= libQrcodegen.so libBarcode128GS1.so
 LFLAGS  = -lQrcodegen -lBarcode128GS1
+
+
+
 # create .o path: build/example.o
 OBJ     = $(patsubst %,$(ODIR)/%,$(_OBJ))
 SOBJ	= $(patsubst %,$(ODIR)/%,$(_SOBJ))
-
-
-
 
 ## just for ./*.c files (otherwise cannot compile main.c when main.o does not exist)
 $(ODIR)/%.o: %.c
@@ -60,6 +65,14 @@ main: $(OBJ) $(SOBJ) main.c
 runtime_main: $(OBJ) $(SOBJ) main.c
 	$(CC) $(CFLAGS) . -c main.c -o $(ODIR)/main.o
 	$(CC) $(CFLAGS) build/ -o $@ $(OBJ) -L $(ODIR) $(LFLAGS)
+
+
+# copy build/*.so files to /usr/lib => dynamic library binary, will work
+installLib: $(SOBJ)
+	$(CP) $(SOBJ) /usr/lib
+# remove compiled build/*.so files from /usr/lib/
+uninstallLib:
+	$(RM) /usr/lib/$(_SOBJ)
 
 
 # clean
