@@ -67,9 +67,11 @@ void addToStartHelper(illNode* head, int value)
     newNode->data        = value;  // set data of new node
     newNode->next        = head->next;  // set next node of new node
     newNode->prev        = head;  // previous node of newNode is head
+    if( head->next != NULL )
+        (head->next)->prev = newNode;
     head->next           = newNode;  // head's next node is newNode (it's the first node)
-    if( (newNode)->next != NULL )  // linkes list was empty head
-        ((newNode)->next)->prev = newNode;
+    if( head->prev == NULL )  // linkes list was empty head
+        head->prev = newNode;
 }
 
 
