@@ -146,8 +146,8 @@ void code128GS1Ex()
 void help()
 {
 	printf(
-		" help usage:  main [head command] <opthions...>\n"
-		" use following head commands and thair options:\n\n"
+		"** usage:  main [head command] <opthions...>\n"
+		"** use the following `head` commands and thair options:\n\n"
 		"o   [ptrs]: runs ptrs usage Example - has no option\n"
 		"o   [intLinkedList]: runs int linked list usage Example, options:\n"
 		"                   - < >   : run basic Example,\n"
@@ -170,6 +170,8 @@ int main( int argc, char **argv )
 {
 	if( argc == 1 )
 		printf("it works :) \n");
+	else if( argc == 2 && strcmp(argv[1],"help")==0 )  /*** print help message ***/
+		help();
 	else if( argc == 2 && strcmp(argv[1],"ptrs")==0 )  /*** Example of using ptrs modlue ***/
 		ptrsEx();
 
