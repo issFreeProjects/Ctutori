@@ -139,10 +139,9 @@ void illRmLast(illNode* head)
 {
     if( head->prev != NULL ){
             // there is at least one node
-            if( head->prev == head->next )  // only one node
-            {
+            if( head->prev == head->next ){  // only one node
                 removeOnlyOneNode(head);
-            }else {  
+            }else {
                 head->data--;  // size decrease by -1 
                 head->prev = (head->prev)->prev;
                 free((head->prev)->next);
