@@ -137,7 +137,7 @@ void help()
 {
 	printf(
 		" help usage:  main [head command] <opthions...>\n"
-		" read following head commands and thair options:\n\n"
+		" use following head commands and thair options:\n\n"
 		"o   [ptrs]: runs ptrs usage Example - has no option\n"
 		"o   [intLinkedList]: runs int linked list usage Example, options:\n"
 		"                   - < >   : run basic Example,\n"
