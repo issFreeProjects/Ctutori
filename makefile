@@ -19,7 +19,7 @@ CFLAGS  = -I
 
 
 _OBJ    = ptrs.o pprint.o hash.o mmath.o sort.o intLinkedList.o binarySearchTree.o intStack.o main.o
-_SOBJ	= libQrcodegen.so
+_SOBJ	= libQrcodegen.so libBarcode128GS1.so
 # create .o path: build/example.o
 OBJ     = $(patsubst %,$(ODIR)/%,$(_OBJ))
 SOBJ	= $(patsubst %,$(ODIR)/%,$(_SOBJ))
