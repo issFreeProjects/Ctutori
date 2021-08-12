@@ -21,6 +21,7 @@
  *   Software.
  */
 
+#include <stdio.h>
 #include <assert.h>
 #include <limits.h>
 #include <stdlib.h>
@@ -1018,3 +1019,19 @@ static int numCharCountBits(enum qrcodegen_Mode mode, int version) {
 		default:  assert(false);  return -1;  // Dummy value
 	}
 }
+
+
+/*---- Utilities ----*/
+  
+// Prints the given QR Code to the console.
+void printQr(const uint8_t qrcode[]) {
+	int size = qrcodegen_getSize(qrcode);
+    int border = 4;
+    for (int y = -border; y < size + border; y++) {
+        for (int x = -border; x < size + border; x++) {
+            printf((qrcodegen_getModule(qrcode, x, y) ? "\033[31;40m  " : "\033[31;107m  "));
+    	}
+    	printf("\n");
+    }
+    printf("\n");
+  }

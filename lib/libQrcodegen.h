@@ -306,6 +306,12 @@ int qrcodegen_getSize(const uint8_t qrcode[]);
 bool qrcodegen_getModule(const uint8_t qrcode[], int x, int y);
 
 
+/*---- Utilities ----*/
+  
+// Prints the given QR Code to the console.
+void printQr(const uint8_t qrcode[]);
+
+
 #ifdef __cplusplus
 }
 #endif
