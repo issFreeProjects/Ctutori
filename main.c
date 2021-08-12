@@ -156,7 +156,7 @@ void help()
 		"o   [hash]: runs hash usage Example - has no option\n"
 		"o   [binarySearchTree]: runs binary Search Tree (bst) usage Example - has no option\n"
 		"o   [intStack]: runs int stack (ist) usage Example - has no option\n"
-		"o   [barcode] <option>: option is expected, options:\n"
+		"o   [barcode] <option>: runs barcode Example, option is required, options:\n"
 		"            - <qr>        : makes Qr Barcode\n"
 		"            - <code128GS1>: makes normal Barcode - uses GS1 algorithm\n"
 	);
@@ -195,8 +195,9 @@ int main( int argc, char **argv )
 	else if( argc == 3 && strcmp(argv[1],"barcode")==0){  /*** Examples of using barcode libraries ***/
 		if( strcmp(argv[2],"qr")==0 )            /*** Ex of using libQrcodegen lib            ***/
 			qrcodeEx();
-		if( strcmp(argv[2],"code128GS1")==0 )
+		else if( strcmp(argv[2],"code128GS1")==0 )
 			code128GS1Ex();
+		else help();
 		// todo: using ofsome other barcode lib ex.
 	}
 	else help();
