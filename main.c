@@ -108,7 +108,12 @@ void binarySearchTreeEx()
 
 void intStackEx()
 {
-	illNode* head = initIntStack();
+	illNode* stack_h = initIntStack();	// init stack head
+	for( int i=0; i<15; i++ )
+		istPush( stack_h, i+1 );
+	istPop( stack_h );
+	sprintILL( stack_h ,"stack: " );
+	printf( "Peek(stack) = %d\n", istPeek(stack_h)->data );
 }
 
 

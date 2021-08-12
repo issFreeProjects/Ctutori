@@ -1,18 +1,13 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include <intStack.h>
 #include <intLinkedList.h>
 
-// default stack length
-#define stackLength 10
 
 
 illNode* initIntStack()
 {
-    illNode* head  = (illNode*)malloc(sizeof(illNode));
-    head->data     = 0;
-    head->next     = NULL;
-    head->prev     = NULL;
-    return head;
+    return initIntLinkedList();
 }
 
 void istPop( illNode* head )
