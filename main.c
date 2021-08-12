@@ -133,6 +133,26 @@ void qrcodeEx()
 
 
 
+void help()
+{
+	printf(
+		" help usage:  main [head command] <opthions...>\n"
+		" read following head commands and thair options:\n\n"
+		"o   [ptrs]: runs ptrs usage Example - has no option\n"
+		"o   [intLinkedList]: runs int linked list usage Example, options:\n"
+		"                   - < >   : run basic Example,\n"
+		"                   - <sort>: also runs  sorting algorithms Example\n"
+		"o   [mmath]: runs mmath usage Example - has no option\n"
+		"o   [hash]: runs hash usage Example - has no option\n"
+		"o   [binarySearchTree]: runs binary Search Tree (bst) usage Example - has no option\n"
+		"o   [intStack]: runs int stack (ist) usage Example - has no option\n"
+		"o   [barcode] <option>: option is expected, options:\n"
+		"            - <>  : make normal Barcode\n"
+		"            - <qr>: make Qr Barcode\n"
+	);
+}
+
+
 /**
  * 		int main method
  */
@@ -140,32 +160,33 @@ int main( int argc, char **argv )
 {
 	if( argc == 1 )
 		printf("it works :) \n");
-	if( argc == 2 && strcmp(argv[1],"ptrs")==0 )  /*** Example of using ptrs modlue ***/
+	else if( argc == 2 && strcmp(argv[1],"ptrs")==0 )  /*** Example of using ptrs modlue ***/
 		ptrsEx();
 
-	if( argc == 2 && strcmp(argv[1],"intLinkedList")==0 )  /*** Example of using int linked list ***/
+	else if( argc == 2 && strcmp(argv[1],"intLinkedList")==0 )  /*** Example of using int linked list ***/
 		intLinkedListEx();
 
-	if( argc == 3 && strcmp(argv[1],"intLinkedList")==0 
+	else if( argc == 3 && strcmp(argv[1],"intLinkedList")==0 
 				  && strcmp(argv[2],"sort")==0 )  /*** Example of using int linked list + sorting algorithms ***/
 		intLinkedList_sortEx();
 
-	if( argc == 2 && strcmp(argv[1],"mmath")==0 )  /*** Example of using mmath ***/
+	else if( argc == 2 && strcmp(argv[1],"mmath")==0 )  /*** Example of using mmath ***/
 		mmathEx();
 	
-	if( argc == 2 && strcmp(argv[1],"hash")==0 )  /*** Example of using hash ***/
+	else if( argc == 2 && strcmp(argv[1],"hash")==0 )  /*** Example of using hash ***/
 		hashEx();
 	
-	if( argc == 2 && strcmp(argv[1],"binarySearchTree")==0)
+	else if( argc == 2 && strcmp(argv[1],"binarySearchTree")==0)
 		binarySearchTreeEx();
 	
-	if( argc == 2 && strcmp(argv[1],"intStack")==0)
+	else if( argc == 2 && strcmp(argv[1],"intStack")==0)
 		intStackEx();
 
-	if( argc == 3 && strcmp(argv[1],"barcode")==0){  /*** Examples of using barcode libraries ***/
+	else if( argc == 3 && strcmp(argv[1],"barcode")==0){  /*** Examples of using barcode libraries ***/
 		if( strcmp(argv[2],"qr")==0 )            /*** Ex of using libQrcodegen lib            ***/
 			qrcodeEx();
 		// todo: using ofsome other barcode lib ex.
 	}
+	else help();
 	return 0;
 }
