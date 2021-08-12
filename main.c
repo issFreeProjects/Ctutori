@@ -157,8 +157,8 @@ void help()
 		"o   [binarySearchTree]: runs binary Search Tree (bst) usage Example - has no option\n"
 		"o   [intStack]: runs int stack (ist) usage Example - has no option\n"
 		"o   [barcode] <option>: option is expected, options:\n"
-		"            - <>  : make normal Barcode\n"
-		"            - <qr>: make Qr Barcode\n"
+		"            - <qr>        : makes Qr Barcode\n"
+		"            - <code128GS1>: makes normal Barcode - uses GS1 algorithm\n"
 	);
 }
 
