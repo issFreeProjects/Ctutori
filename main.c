@@ -18,7 +18,7 @@
 #include <ds/binarySearchTree.h>
 
 #include <lib/libQrcodegen.h>
-
+#include <lib/libBarcode128GS1.h>
 
 /**
  * 		Example functions
@@ -119,7 +119,7 @@ void intStackEx()
 
 void qrcodeEx()
 {
-	const char *text = "Hellow World!";  // text to decode into qr
+	const char *text = "Hello World!";  // text to decode into qr
 	enum qrcodegen_Ecc errCorLvl = qrcodegen_Ecc_LOW;  // Error correction level
 	 // Make and print the QR Code symbol
     uint8_t qrcode[qrcodegen_BUFFER_LEN_MAX];
@@ -130,6 +130,17 @@ void qrcodeEx()
     	printQr(qrcode);
 }
 
+
+void code128GS1Ex()
+{
+	const char *str = "hello";
+    size_t barcode_length = code128_estimate_len(str);
+    char barcode_data[barcode_length];
+    barcode_length = code128_encode_gs1(str, barcode_data, barcode_length);
+    /* barcode_length is now the actual number of "bars". */
+	
+	printCode128( barcode_length, barcode_data );
+}
 
 
 void help()
@@ -184,6 +195,8 @@ int main( int argc, char **argv )
 	else if( argc == 3 && strcmp(argv[1],"barcode")==0){  /*** Examples of using barcode libraries ***/
 		if( strcmp(argv[2],"qr")==0 )            /*** Ex of using libQrcodegen lib            ***/
 			qrcodeEx();
+		if( strcmp(argv[2],"code128GS1")==0 )
+			code128GS1Ex();
 		// todo: using ofsome other barcode lib ex.
 	}
 	else help();
