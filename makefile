@@ -10,7 +10,6 @@
 #   and ``` make clean ```` to remove object files                                    #
 #######################################################################################
 
-# flags and .o files definition
 CC      = gcc
 ODIR	= build
 UDIR    = utils
