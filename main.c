@@ -120,7 +120,6 @@ void intStackEx()
 void qrcodeEx()
 {
 	const char *text = "Hellow World!";  // text to decode into qr
-	printf("test");
 	enum qrcodegen_Ecc errCorLvl = qrcodegen_Ecc_LOW;  // Error correction level
 	 // Make and print the QR Code symbol
     uint8_t qrcode[qrcodegen_BUFFER_LEN_MAX];
