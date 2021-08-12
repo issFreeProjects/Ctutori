@@ -20,6 +20,7 @@ CFLAGS  = -I
 
 _OBJ    = ptrs.o pprint.o hash.o mmath.o sort.o intLinkedList.o binarySearchTree.o intStack.o main.o
 _SOBJ	= libQrcodegen.so libBarcode128GS1.so
+LFLAGS  = -lQrcodegen -lBarcode128GS1
 # create .o path: build/example.o
 OBJ     = $(patsubst %,$(ODIR)/%,$(_OBJ))
 SOBJ	= $(patsubst %,$(ODIR)/%,$(_SOBJ))
@@ -58,7 +59,7 @@ main: $(OBJ) $(SOBJ) main.c
 # set LD_LIBRARY_PATH:	``` export LD_LIBRARY_PATH="$(pwd)/build" ```
 runtime_main: $(OBJ) $(SOBJ) main.c
 	$(CC) $(CFLAGS) . -c main.c -o $(ODIR)/main.o
-	$(CC) $(CFLAGS) build/ -o $@ $(OBJ) -L $(ODIR) -lQrcodegen
+	$(CC) $(CFLAGS) build/ -o $@ $(OBJ) -L $(ODIR) $(LFLAGS)
 
 
 # clean
