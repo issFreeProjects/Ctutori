@@ -1031,7 +1031,7 @@ void printQr(const uint8_t qrcode[]) {
         for (int x = -border; x < size + border; x++) {
             printf((qrcodegen_getModule(qrcode, x, y) ? "\033[31;40m  " : "\033[31;107m  "));
     	}
-    	printf("\n");
+    	printf("\e[0m\n");
     }
-    printf("\n");
+    printf("\e[0m\n");
   }
