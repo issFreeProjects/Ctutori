@@ -112,6 +112,22 @@ void intStackEx()
 }
 
 
+void qrcodeEx()
+{
+	const char *text = "Hellow World!";  // text to decode into qr
+	printf("test");
+	enum qrcodegen_Ecc errCorLvl = qrcodegen_Ecc_LOW;  // Error correction level
+	 // Make and print the QR Code symbol
+    uint8_t qrcode[qrcodegen_BUFFER_LEN_MAX];
+    uint8_t tempBuffer[qrcodegen_BUFFER_LEN_MAX];
+    bool ok = qrcodegen_encodeText(text, tempBuffer, qrcode, errCorLvl,
+    qrcodegen_VERSION_MIN, qrcodegen_VERSION_MAX, qrcodegen_Mask_AUTO, true);
+    if (ok)
+    	printQr(qrcode);
+}
+
+
+
 /**
  * 		int main method
  */
@@ -140,5 +156,11 @@ int main( int argc, char **argv )
 	
 	if( argc == 2 && strcmp(argv[1],"intStack")==0)
 		intStackEx();
+
+	if( argc == 3 && strcmp(argv[1],"barcode")==0){  /*** Examples of using barcode libraries ***/
+		if( strcmp(argv[2],"qr")==0 )            /*** Ex of using libQrcodegen lib            ***/
+			qrcodeEx();
+		// todo: using ofsome other barcode lib ex.
+	}
 	return 0;
 }
