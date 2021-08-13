@@ -308,6 +308,10 @@ bool qrcodegen_getModule(const uint8_t qrcode[], int x, int y);
 
 /*---- Utilities ----*/
   
+// it's just a smoke test
+// will return 2d bool arr, true if the square is black and falce if white
+bool** qrcodeST( int* sideLen );
+
 // Prints the given QR Code to the console.
 void printQr(const uint8_t qrcode[]);
 

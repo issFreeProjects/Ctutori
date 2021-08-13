@@ -1023,6 +1023,30 @@ static int numCharCountBits(enum qrcodegen_Mode mode, int version) {
 
 /*---- Utilities ----*/
   
+// it's just a smoke test!
+bool** qrcodeST( int* sideLen )
+{
+	// create qrdata
+	const char *text = "Hello World!";  // text to decode into qr
+	enum qrcodegen_Ecc errCorLvl = qrcodegen_Ecc_LOW;  // Error correction level
+    uint8_t data[qrcodegen_BUFFER_LEN_MAX];
+    uint8_t tempBuffer[qrcodegen_BUFFER_LEN_MAX];
+    bool ok = qrcodegen_encodeText(text, tempBuffer, data, qrcodegen_Ecc_LOW,
+    qrcodegen_VERSION_MIN, qrcodegen_VERSION_MAX, qrcodegen_Mask_AUTO, true);
+	// allocate memory for result - 2d array
+	*sideLen = qrcodegen_getSize(data);
+	bool** result = malloc(*sideLen*sizeof(bool*));
+	for(int i=0; i< *sideLen; i++) result[i] = malloc(*sideLen*sizeof(bool));
+	// set result[x][y] = 1 if (x,y) square be black and 0 if ... be white
+	for( int x=0; x<*sideLen; x++){
+		for( int y=0; y<*sideLen; y++)
+			result[x][y] = qrcodegen_getModule(data, x, y)?1:0;
+	}
+	return result;
+}
+
+
+
 // Prints the given QR Code to the console.
 void printQr(const uint8_t qrcode[]) {
 	int size = qrcodegen_getSize(qrcode);
