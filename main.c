@@ -5,6 +5,7 @@
  * */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include <utils/hash.h>
@@ -17,6 +18,7 @@
 #include <ds/intLinkedList.h>
 #include <ds/binarySearchTree.h>
 
+#include <lib/libattopng.h>
 #include <lib/libQrcodegen.h>
 #include <lib/libBarcode128GS1.h>
 
@@ -143,6 +145,59 @@ void code128GS1Ex()
 }
 
 
+void mkPngBarcodeEx()
+{
+	size_t barcode_length;
+	char* barcode_data = code128ST( &barcode_length );  // barcode data from smoke test function!
+	unsigned int BAR_LEN = 5;  // width of each bar in output png
+	unsigned int H = 150;  // height of png
+	unsigned int W = barcode_length*BAR_LEN;	// width of png
+
+	// inti png library (libattopng)
+    libattopng_t *png = libattopng_new(W, H, PNG_PALETTE);
+    uint32_t palette[] = { RGB_WHITE, RGB_BLACK };  // make palette with two colors
+    libattopng_set_palette(png, palette, 2);  // set palette
+    for (int y = 0; y < H; y++) {
+        for (int x = 0; x < W; x++)
+            libattopng_set_pixel( png, x, y,  barcode_data[x/BAR_LEN] );
+    }
+
+    libattopng_save(png, "/tmp/barcode.png");
+	free(barcode_data);
+    libattopng_destroy(png);
+}
+
+
+void mkPngQrEx()
+{
+	size_t SQ_LEN = 5;  // width of each bar in output png
+	size_t BOARDER = 30;
+	int sideLen;
+	bool** qrdata = qrcodeST( &sideLen );
+
+	unsigned int W = sideLen*SQ_LEN;
+	unsigned int H = W;
+
+	// inti library
+    libattopng_t *png = libattopng_new(W+BOARDER, H+BOARDER, PNG_PALETTE);
+    uint32_t palette[] = { RGB_WHITE, RGB_BLACK };
+    libattopng_set_palette(png, palette, 2);
+    
+	for (int y = 0; y < H; y++) {
+        for (int x = 0; x < W; x++){
+            libattopng_set_pixel(png, x+BOARDER/2, y+BOARDER/2, qrdata[x/SQ_LEN][y/SQ_LEN] );
+		}
+    }
+
+	for(int i = 0; i < sideLen; i++)
+		free(qrdata[i]);
+	free(qrdata);
+    libattopng_save(png, "/tmp/qrcode.png");
+    libattopng_destroy(png);
+}
+
+
+
 void help()
 {
 	printf(
@@ -201,6 +256,13 @@ int main( int argc, char **argv )
 			code128GS1Ex();
 		else help();
 		// todo: using ofsome other barcode lib ex.
+	}
+	else if( argc == 3 && strcmp(argv[1],"png")==0){
+		if( strcmp(argv[2],"barcode")==0 )
+			mkPngBarcodeEx();
+		else if ( strcmp(argv[2],"qr")==0 )
+			mkPngQrEx();
+		else help();
 	}
 	else help();
 	return 0;
