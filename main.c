@@ -121,27 +121,18 @@ void intStackEx()
 
 void qrcodeEx()
 {
-	const char *text = "Hello World!";  // text to decode into qr
-	enum qrcodegen_Ecc errCorLvl = qrcodegen_Ecc_LOW;  // Error correction level
-	 // Make and print the QR Code symbol
-    uint8_t qrcode[qrcodegen_BUFFER_LEN_MAX];
-    uint8_t tempBuffer[qrcodegen_BUFFER_LEN_MAX];
-    bool ok = qrcodegen_encodeText(text, tempBuffer, qrcode, errCorLvl,
-    qrcodegen_VERSION_MIN, qrcodegen_VERSION_MAX, qrcodegen_Mask_AUTO, true);
-    if (ok)
-    	printQr(qrcode);
+	uint8_t* data = qrcodeST1();  // make data of smoke test qr output
+	printQr( data );
+	free(data);  // data was allocated
 }
 
 
 void code128GS1Ex()
 {
-	const char *str = "hello";
-    size_t barcode_length = code128_estimate_len(str);
-    char barcode_data[barcode_length];
-    barcode_length = code128_encode_gs1(str, barcode_data, barcode_length);
-    /* barcode_length is now the actual number of "bars". */
-	
+	size_t barcode_length;
+	char* barcode_data = code128ST( &barcode_length );  // barcode data from smoke test function - hello world -
 	printCode128( barcode_length, barcode_data );
+	free(barcode_data);  // data was allocated
 }
 
 
@@ -149,8 +140,8 @@ void mkPngBarcodeEx()
 {
 	size_t barcode_length;
 	char* barcode_data = code128ST( &barcode_length );  // barcode data from smoke test function!
-	unsigned int BAR_LEN = 5;  // width of each bar in output png
-	unsigned int H = 150;  // height of png
+	unsigned int BAR_LEN = 10;  // width of each bar in output png
+	unsigned int H = BAR_LEN*50;  // height of png
 	unsigned int W = barcode_length*BAR_LEN;	// width of png
 
 	// inti png library (libattopng)
@@ -170,8 +161,8 @@ void mkPngBarcodeEx()
 
 void mkPngQrEx()
 {
-	size_t SQ_LEN = 5;  // width of each bar in output png
-	size_t BOARDER = 30;
+	size_t SQ_LEN = 25;  // width of each bar in output png
+	size_t BOARDER = SQ_LEN*6;
 	int sideLen;
 	bool** qrdata = qrcodeST( &sideLen );
 
@@ -214,6 +205,9 @@ void help()
 		"o   [barcode] <option>: runs barcode Example, option is required, options:\n"
 		"            - <qr>        : makes Qr Barcode\n"
 		"            - <code128GS1>: makes normal Barcode - uses GS1 algorithm\n"
+		"o   [png] <option>: make simple png file at /tmp, option required. options:\n"
+		"        - <qr>      : makes hello world qr barcode png\n"
+		"        - <barcode> : makes code128 barcode png"
 	);
 }
 
