@@ -41,6 +41,9 @@ size_t code128_estimate_len(const char *s);
 size_t code128_encode_gs1(const char *s, char *out, size_t maxlength);
 size_t code128_encode_raw(const char *s, char *out, size_t maxlength);
 
+// it's just a smoke test
+// make hello world barcode data and will set value of the barcode_length ptr
+char* code128ST(size_t *barcode_length);
 // use for print
 void printCode128( size_t barcode_length, char* barcode_data );
 

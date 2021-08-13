@@ -553,6 +553,18 @@ size_t code128_encode_gs1(const char *s, char *out, size_t maxlength)
 }
 
 
+// it's just a smoke test
+char* code128ST(size_t *barcode_length)
+{
+    const char *str = "hello world!";  // to decode
+    *barcode_length = code128_estimate_len(str);
+    char* barcode_data = (char*)malloc( *barcode_length*sizeof(char) ) ;  // barcode 0 is white and 1 is black bar
+    *barcode_length = code128_encode_gs1(str, barcode_data, *barcode_length);
+    return barcode_data;
+}
+
+
+
 /**
  *      just print the barcode128
  *      \033[31;40m is black and \033[31;107m is white
