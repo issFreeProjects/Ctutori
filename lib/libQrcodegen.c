@@ -1022,17 +1022,24 @@ static int numCharCountBits(enum qrcodegen_Mode mode, int version) {
 
 
 /*---- Utilities ----*/
-  
-// it's just a smoke test!
-bool** qrcodeST( int* sideLen )
+
+// this will return smoke test hello world qrdata
+uint8_t* qrcodeST1()
 {
-	// create qrdata
 	const char *text = "Hello World!";  // text to decode into qr
 	enum qrcodegen_Ecc errCorLvl = qrcodegen_Ecc_LOW;  // Error correction level
-    uint8_t data[qrcodegen_BUFFER_LEN_MAX];
+    uint8_t* data = (uint8_t*)malloc( qrcodegen_BUFFER_LEN_MAX*sizeof(uint8_t) );
     uint8_t tempBuffer[qrcodegen_BUFFER_LEN_MAX];
     bool ok = qrcodegen_encodeText(text, tempBuffer, data, qrcodegen_Ecc_LOW,
     qrcodegen_VERSION_MIN, qrcodegen_VERSION_MAX, qrcodegen_Mask_AUTO, true);
+	return data;
+}
+
+
+// it's just a smoke test!
+bool** qrcodeST( int* sideLen )
+{
+	uint8_t* data = qrcodeST1();  // create qrdata
 	// allocate memory for result - 2d array
 	*sideLen = qrcodegen_getSize(data);
 	bool** result = malloc(*sideLen*sizeof(bool*));
@@ -1042,6 +1049,7 @@ bool** qrcodeST( int* sideLen )
 		for( int y=0; y<*sideLen; y++)
 			result[x][y] = qrcodegen_getModule(data, x, y)?1:0;
 	}
+	free(data);  // data was allocated
 	return result;
 }
 
@@ -1058,4 +1066,4 @@ void printQr(const uint8_t qrcode[]) {
     	printf("\e[0m\n");
     }
     printf("\e[0m\n");
-  }
+}

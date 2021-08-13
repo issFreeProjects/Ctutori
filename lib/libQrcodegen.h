@@ -308,8 +308,12 @@ bool qrcodegen_getModule(const uint8_t qrcode[], int x, int y);
 
 /*---- Utilities ----*/
   
+// this will return smoke test hello world qrdata
+// returned data is not useable without qrcodegen_getModule function
+// you can use this in printQr function (Ex at main.c)
+uint8_t* qrcodeST1();
 // it's just a smoke test
-// will return 2d bool arr, true if the square is black and falce if white
+// will return 2d bool arr, true if the square is black and false if white
 bool** qrcodeST( int* sideLen );
 
 // Prints the given QR Code to the console.
