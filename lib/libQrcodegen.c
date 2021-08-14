@@ -1054,6 +1054,14 @@ bool** qrcodeST( int* sideLen )
 }
 
 
+// this function will free returned bool** from bool** qrcodeST function
+void freeQrcodeST(bool** qr, int sideLen)
+{
+	for(int i = 0; i < sideLen; i++)
+		free(qr[i]);
+	free(qr);
+}
+
 
 // Prints the given QR Code to the console.
 void printQr(const uint8_t qrcode[]) {

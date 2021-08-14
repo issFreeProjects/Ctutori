@@ -179,10 +179,7 @@ void mkPngQrEx()
             libattopng_set_pixel(png, x+BOARDER/2, y+BOARDER/2, qrdata[x/SQ_LEN][y/SQ_LEN] );
 		}
     }
-
-	for(int i = 0; i < sideLen; i++)
-		free(qrdata[i]);
-	free(qrdata);
+	freeQrcodeST(qrdata,sideLen);  // free memory
     libattopng_save(png, "/tmp/qrcode.png");
     libattopng_destroy(png);
 }

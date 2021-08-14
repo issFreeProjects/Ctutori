@@ -315,6 +315,8 @@ uint8_t* qrcodeST1();
 // it's just a smoke test
 // will return 2d bool arr, true if the square is black and false if white
 bool** qrcodeST( int* sideLen );
+// this function will free returned bool** from bool** qrcodeST function
+void freeQrcodeST(bool** qr, int sideLen);
 
 // Prints the given QR Code to the console.
 void printQr(const uint8_t qrcode[]);
