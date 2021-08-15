@@ -25,8 +25,8 @@ CFLAGS  = -I
 #		add lib[lib name].so   to  _SOBJ and,   -- static  library --
 #		-l[lib name]           to  LFLAGS.      -- dynamic library --
 _OBJ    = ptrs.o pprint.o hash.o mmath.o sort.o 2dAlgebra.o intLinkedList.o binarySearchTree.o intStack.o main.o
-_SOBJ	= libQrcodegen.so libBarcode128GS1.so libattopng.so
-LFLAGS  = -lQrcodegen -lBarcode128GS1 -lattopng
+_SOBJ	= libQrcodegen.so libBarcode128GS1.so libattopng.so libupng.so
+LFLAGS  = -lQrcodegen -lBarcode128GS1 -lattopng -lupng
 
 
 
