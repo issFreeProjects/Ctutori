@@ -17,6 +17,7 @@ ODIR	= build
 UDIR    = utils
 LDIR	= lib
 DSDIR   = ds
+# set CFLAGS = -g -I for debugging and set CLAGS = -I for normal make
 CFLAGS  = -I
 
 ## edit this part when you need to compile new file - add [filename].o to _OBJ
