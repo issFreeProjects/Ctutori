@@ -1,4 +1,4 @@
 build/*
-main
-runtime_main
+cTutori
+runtime_cTutori
 .vscode

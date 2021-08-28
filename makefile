@@ -55,7 +55,7 @@ $(ODIR)/%.so: $(LDIR)/%.c $(LDIR)/%.h
 # compiling main.c and linking .o files to exec file
 main: $(OBJ) $(SOBJ) main.c
 	$(CC) $(CFLAGS) . -c main.c -o $(ODIR)/main.o
-	$(CC) $(CFLAGS) build/ -o $@ $(OBJ) $(SOBJ)
+	$(CC) $(CFLAGS) build/ -o cTutori $(OBJ) $(SOBJ)
 
 
 # alternative main  -- dynamic library --
@@ -65,7 +65,7 @@ main: $(OBJ) $(SOBJ) main.c
 # set LD_LIBRARY_PATH:	``` export LD_LIBRARY_PATH="$(pwd)/build" ```
 runtime_main: $(OBJ) $(SOBJ) main.c
 	$(CC) $(CFLAGS) . -c main.c -o $(ODIR)/main.o
-	$(CC) $(CFLAGS) build/ -o $@ $(OBJ) -L $(ODIR) $(LFLAGS)
+	$(CC) $(CFLAGS) build/ -o runtime_cTutori $(OBJ) -L $(ODIR) $(LFLAGS)
 
 
 # copy build/*.so files to /usr/lib => dynamic library binary, will work
