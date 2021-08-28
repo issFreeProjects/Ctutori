@@ -88,6 +88,9 @@ void hashEx()
 	if( i%5 == 0 )
 		printf("\n");
 	}
+
+	printf("sum2 hash of 542 = %d\n", SUM2hash(542));
+	printf("sum 2^power hash of 542, MAX_VALUE=10 is %d\n", SUMPOW2hash(542,10));
 }
 
 
