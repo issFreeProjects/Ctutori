@@ -8,15 +8,15 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <utils/hash.h>
-#include <utils/sort.h>
-#include <utils/ptrs.h>
-#include <utils/mmath.h>
-#include <utils/pprint.h>
+#include "utils/hash.h"
+#include "utils/sort.h"
+#include "utils/ptrs.h"
+#include "utils/mmath.h"
+#include "utils/pprint.h"
 
-#include <ds/intStack.h>
-#include <ds/intLinkedList.h>
-#include <ds/binarySearchTree.h>
+#include "ds/intStack.h"
+#include "ds/intLinkedList.h"
+#include "ds/binarySearchTree.h"
 
 #include <lib/libattopng.h>
 #include <lib/libQrcodegen.h>
