@@ -1,5 +1,5 @@
 /**
- *      this is implementaion of some simple hash functions
+ *      hash module implements some of simple hash functions
  *      this hash functions, can be used in hash table
  *      data structure or stuff like that.
  *      remember, not all of them are cryptographic hash function
