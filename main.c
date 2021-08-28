@@ -25,7 +25,7 @@
 /**
  * 		Example functions
  * 		you can lean using modules by them
- * 		almost all useful functions of modules is here!
+ * 		almost all useful functions of modules are here!
  */
 void ptrsEx()
 {
