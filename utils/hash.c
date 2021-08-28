@@ -10,3 +10,22 @@ int PJWhash( int h ){
     // The top 4 bits of h are again all zero
     return ( h & 127 );
 }
+
+
+int SUM2hash( int h ){
+    unsigned int n = 0;
+    for(int h2=h; h2!=0; h2=h2/2)
+        n++;
+    n = n/2;
+    int p1=h>>n, p2=((h>>n)<<n)^h;
+    return p1 + p2;
+}
+
+
+int SUMPOW2hash( int h, int MAX_VALUE )
+{
+    int hash = SUM2hash(h);
+    while( hash > MAX_VALUE )
+        hash = SUM2hash(hash);
+    return hash;
+}
