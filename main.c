@@ -9,7 +9,6 @@
 #include <string.h>
 
 #include "utils/hash.h"
-#include "utils/sort.h"
 #include "utils/ptrs.h"
 #include "utils/mmath.h"
 #include "utils/pprint.h"
