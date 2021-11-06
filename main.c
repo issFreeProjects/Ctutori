@@ -12,6 +12,7 @@
 #include "utils/ptrs.h"
 #include "utils/mmath.h"
 #include "utils/pprint.h"
+#include "utils/scanner.h"
 
 #include "ds/intStack.h"
 #include "ds/intLinkedList.h"
@@ -187,6 +188,13 @@ void mkPngQrEx()
 }
 
 
+void scannerEx(){
+	char* string = next();
+	iterate(string, &print_helper);
+	free(string);
+}
+
+
 
 void help()
 {
@@ -206,7 +214,8 @@ void help()
 		"            - <code128GS1>: makes normal Barcode - uses GS1 algorithm\n"
 		"o   [png] <option>: make simple png file at /tmp, option required. options:\n"
 		"        - <qr>      : makes hello world qr barcode png\n"
-		"        - <barcode> : makes code128 barcode png"
+		"        - <barcode> : makes code128 barcode png\n"
+		"o   [scanner]: read the STDIN and write it's charaters like (char) to STDOUT\n"
 	);
 }
 
@@ -256,6 +265,9 @@ int main( int argc, char **argv )
 		else if ( strcmp(argv[2],"qr")==0 )
 			mkPngQrEx();
 		else help();
+	}
+	else if( argc == 2 && strcmp(argv[1],"scanner")==0){
+		scannerEx();
 	}
 	else help();
 	return 0;
